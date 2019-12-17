@@ -1,0 +1,394 @@
+@import "Variables.scss";
+
+textarea:focus, input:focus{
+  outline: none;
+}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+  vertical-align: baseline;
+  font-family: 'Roboto', sans-serif;
+
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.Header_Cont {
+  width: 50%;
+  // background-color: blue;
+  height: 3.5rem;
+  display: flex;
+}
+
+.Home_Logo {
+  font-size: 3rem;
+  margin: auto 1rem;
+  color: $SecondaryColor
+}
+
+.Header_left_text{
+  margin: auto 1.5rem;
+  font-size: 14px;
+}
+
+.Header_Right_Cont {
+  width: 50%;
+  // background-color: green;
+}
+
+.Searchbar_Cont {
+  width: 100%;
+  height: 4rem;
+  background-color: $BackgroundColor;
+  display: flex;
+
+}
+
+.State_Input_Cont {
+  margin: auto 2rem;
+  display: flex;
+}
+
+.State_Input {
+  height: 1.65rem;
+  width: 4rem;
+  border: none;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+  color: gray;
+}
+
+.State_Input::after {
+  color: #333;
+  
+}
+
+
+.City_Input {
+  margin: auto 0rem auto 2rem;
+  border: none;
+  border-radius:2px;
+  height: 1.5rem;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5)
+}
+
+::placeholder {
+  padding: 1rem;
+}
+
+.Page_Cont {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  // background-color: $BackgroundColor;
+  margin-left: 2rem;
+}
+
+.Search_Title{
+  margin: 1rem 3rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.Home_Box_Grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.Home_Box_Cont {
+  height: 17.5rem;
+}
+
+.Home_Box_Image {
+  height: 8rem;
+  width: 12rem;
+  // background-color: red;
+  justify-content: center;
+  // align-items: center;
+  margin: auto auto auto auto;
+  background-size: contain;
+  background-image: url('https://media.istockphoto.com/photos/beautiful-living-room-interior-with-tall-vaulted-ceiling-loft-area-picture-id950127468?k=6&m=950127468&s=612x612&w=0&h=zN-7gp3knmm1wnltXF6-_CQ-5s2hkgB4r3y0ngluxQs=');
+  border-radius: 7px;
+    // padding: 50px;
+    // background-color: green;
+    transition: transform .8s; /* Animation */
+    // width: 200px;
+    // height: 200px;
+    // margin: 0 auto;
+}
+
+.Home_Box_Image_Cont {
+  height: 8rem;
+  width: 12rem;
+  justify-content: center;
+  margin: 1rem auto auto auto;
+  background-size: contain;
+  overflow: hidden;
+  border-radius: 7px
+}
+
+.Home_Box_Image:hover {
+  transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.Home_Title {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 17px;
+  margin-right: 1rem;
+}
+
+.Home_Sub_Address {
+  margin-top: .5rem;
+  font-size: 9px;
+  margin-right: 1.5rem;
+  color: $GreyTextColor;
+  margin-left: .8rem;
+}
+
+.Home_Sub_Cont {
+  width: 12rem;
+  margin: auto;
+}
+
+.Home_Sub_IconInfo{
+  display: flex;
+  margin-top: 1rem;
+  color: $GreyTextColor;
+  margin-left: .8rem;
+}
+
+.Home_Sub_Bath_Text{
+  font-size: 9px;
+  display: flex;
+}
+
+.Home_Sub_Bed_Text {
+  font-size: 9px;
+  margin-left: 1rem;
+  display: flex;
+}
+
+.Home_Sub_Price_Cont {
+  width: 12rem;
+  height: 3rem;
+  border-radius: 7px;
+  margin-top: 1rem;
+  background-color: $BackgroundColor;
+  display: flex;
+}
+
+.Home_Sub_Price_Text {
+  margin: auto .5rem;
+    text-align: left;
+    font-size: 12px;
+    font-weight: bold;
+    color: $GreyTextColor
+}
+
+.Home_Sub_Price_Price {
+  margin: auto;
+  margin-left: 2.8rem;
+  color: $SecondaryColor
+}
+
+.IndHome_LargeImage {
+  height: 16.3rem;
+  width: 25rem;
+  // background-color: red;
+  justify-content: center;
+  // align-items: center;
+  margin: auto auto auto auto;
+  background-size: contain;
+  background-image: url('https://media.istockphoto.com/photos/beautiful-living-room-interior-with-tall-vaulted-ceiling-loft-area-picture-id950127468?k=6&m=950127468&s=612x612&w=0&h=zN-7gp3knmm1wnltXF6-_CQ-5s2hkgB4r3y0ngluxQs=');
+  border-radius: 7px;
+}
+
+.IndHome_Images_Cont {
+  display: grid;
+  /* grid-template-columns: repeat(10, 1fr); */
+  grid-template:
+      "b a a" 90px
+      "c a a" 90px
+      "d a a" 90px / 1fr 1fr 1fr;
+  // height: 20rem;
+  grid-template-columns: 150px 200px 200px;
+}
+
+.IndHome_SmallImage{
+  width: 8rem;
+  height: 5rem;
+  margin: auto auto auto auto;
+    background-size: contain;
+    background-image: url('https://media.istockphoto.com/photos/beautiful-living-room-interior-with-tall-vaulted-ceiling-loft-area-picture-id950127468?k=6&m=950127468&s=612x612&w=0&h=zN-7gp3knmm1wnltXF6-_CQ-5s2hkgB4r3y0ngluxQs=');
+    border-radius: 7px;
+    justify-content: center;
+}
+
+.IndHome_SmallImage_Dark {
+  background-color: #2a2c36;
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
+  border-radius: 7px;
+}
+
+.IndHome_SmallImage_Dark_Icon {
+  color: white;
+  font-size: 12px;
+  text-align: center;
+  padding: 2rem;
+}
+
+.IndHome_Text {
+  height: 15rem;
+
+}
+
+.IndHome_Text_Title_Cont{
+  height: 3rem;
+  display: flex;
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+
+.IndHome_Text_Title_Price {
+  font-size: 20px;
+    font-weight: bold;
+    color: $SecondaryColor;
+    margin-left: 13rem;
+}
+
+.IndHome_Text_Title_Add {
+    font-size: 20px
+}
+
+.IndHome_Text_Title_City {
+  font-size: 12px;
+}
+
+.IndHome_Text_Sub_Info {
+  width: 23rem;
+  height: 8rem;
+  // display: flex;
+  /* justify-content: end; */
+  /* align-items: end; */
+  // background-color: red;
+  /* align-content: flex-end; */
+  justify-items: end;
+margin-left: 1rem;
+}
+
+.IndHome_Text_Sub_1stRow {
+  height: 3rem;
+  width: 23rem;
+  display: flex;
+}
+
+.IndHome_Text_Sub_Bed {
+  margin: 0rem 4rem 0rem 0rem;
+  font-size: 13px;
+}
+
+.IndHome_Text_Sub_Flex {
+  display: flex;
+  margin-top: .3rem;
+  font-weight: bold;
+  width: 5rem;
+}
+
+.IndHome_Text_Sub_Icon {
+  color: $GreyTextColor;
+  margin-left: .3rem;
+}
+
+.IndHome_Text_Sub_Description {
+  display: grid;
+    /* grid-template-columns: repeat(4, 1fr); */
+    grid-template: auto/ 140px 1fr;
+    margin-top: .5rem;
+}
+
+.IndHome_Text_Sub_Description_Title {
+  font-weight: bold;
+}
+
+.IndHome_Line {
+  width: 24rem;
+    display: flex;
+    text-align: left;
+    margin-right: 13.4rem
+}

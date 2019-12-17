@@ -1,24 +1,28 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
-
+import './App.scss';
+import Headerbar from './components/Headerbar'
+import Searchbar from './components/Searchbar'
+import HomeResults from './components/HomeResultsCont';
+import MapSearch from './components/MapSearch';
+import {Switch, Route} from 'react-router-dom';
+import IndHome from './components/IndHomeImages';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+    <Headerbar />
+    <Searchbar />
+    <div className="Page_Cont">
+      <Switch>
+        <Route exact path="/">
+          <HomeResults />
+        </Route>
+        <Route>
+          <IndHome exact path="/Home" />
+        </Route>      
+    </Switch>
+    <MapSearch />
+    </div>
     </div>
   );
 }
