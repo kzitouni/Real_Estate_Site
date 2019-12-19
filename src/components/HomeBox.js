@@ -6,8 +6,9 @@ import {Link} from 'react-router-dom'
 var convert = require('xml-js');
 
 const HomeBox = (item) => {
-    const {fetchData, result} = useContext(Context)
-    let price = item.zestimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    const {fetchData, result, onClicked} = useContext(Context)
+    let price = (item.zestimate != undefined ? "$"+item.zestimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "N/A")
+    let type = (item.type != undefined ? item.type.toString().replace(/([A-Z 0-9])/g, ' $1').trim() : item.type)
     // const onClick = () => {
     //     fetchData()
     // }
@@ -21,19 +22,20 @@ const HomeBox = (item) => {
                 {/* <button onClick={() => onClick()}>
 
                 </button> */}
-                <Link to="/Home"> 
+               
                 <div className="Home_Box_Image_Cont">
+                <Link to="/Home" onClick={() => onClicked(item.zpid)}> 
                     <div className="Home_Box_Image">
                     </div>
+                </Link>  
                 </div>
-                </Link> 
                 <div className="Home_Sub_Cont">
-    <h1 className="Home_Title">Apartment For Sale</h1>
+    <h1 className="Home_Title">{type}</h1>
             <p className="Home_Sub_Address"><FaMapMarkerAlt/>{item.address}</p>
             <div className="Home_Sub_IconInfo">
 
                 <p className="Home_Sub_Bath_Text">
-                    <FaBath style={{marginRight:'.2rem'}} />  {item.bath} Bath
+                    <FaBath style={{marginRight:'.2rem'}} />  {item.bathrooms} Bath
                 </p>
                 <p className="Home_Sub_Bed_Text">
                     <IoIosBed style={{marginRight:'.2rem'}} />  {item.bed == 0 ? "?" : item.bed} Bed
@@ -43,8 +45,8 @@ const HomeBox = (item) => {
                 </p>
             </div>
             <div className="Home_Sub_Price_Cont">
-                <p className="Home_Sub_Price_Text">Zestimate</p> 
-    <p className="Home_Sub_Price_Price">${price}
+                <p className="Home_Sub_Price_Text">{item.rentzestimate}</p> 
+    <p className="Home_Sub_Price_Price">{price}
     </p>
             </div>
                 </div>

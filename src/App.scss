@@ -256,13 +256,15 @@ table {
     text-align: left;
     font-size: 12px;
     font-weight: bold;
-    color: $GreyTextColor
+    color: $GreyTextColor;
+    width: 6rem;
 }
 
 .Home_Sub_Price_Price {
   margin: auto;
-  margin-left: 2.8rem;
-  color: $SecondaryColor
+  // margin-left: 2.8rem;
+  color: $SecondaryColor;
+  width: 6rem;
 }
 
 .IndHome_LargeImage {
