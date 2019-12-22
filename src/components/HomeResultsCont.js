@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import HomeBox from './HomeBox'
 import HomeBoxMapped from './HomeBoxMapped'
-
+import { Context } from '../Functions/SearchFetch'
 const HomeResultsCont = () => {
-
+const {addy, setBack} = useContext(Context)
+setBack(false)
     return (
-        <div>
-            <h1 className="Search_Title">Panoramic Hill, Oakland, California</h1>
+        <div className="Right_Side_Cont">
+<h1 className="Search_Title">{addy.cit}, {addy.sta.toUpperCase()}</h1>
+
             <HomeBoxMapped />
         </div>
     )

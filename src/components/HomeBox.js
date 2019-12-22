@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 var convert = require('xml-js');
 
 const HomeBox = (item) => {
-    const {fetchData, result, onClicked} = useContext(Context)
+    const {fetchData, result, onClicked, setHouse, setBack} = useContext(Context)
     let price = (item.zestimate != undefined ? "$"+item.zestimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "N/A")
     let type = (item.type != undefined ? item.type.toString().replace(/([A-Z 0-9])/g, ' $1').trim() : item.type)
     // const onClick = () => {
@@ -17,20 +17,20 @@ const HomeBox = (item) => {
     // console.log(result1);
     // console.log(HouseSearchResult({addr:"884 devon st", city:"Kearny", sta:"NJ"}))
     return (
-  
+
             <div className="Home_Box_Cont">
                 {/* <button onClick={() => onClick()}>
 
                 </button> */}
                
-                <div className="Home_Box_Image_Cont">
+                <div className="Home_Box_Image_Cont" onMouseEnter={() => setHouse()}>
                 <Link to="/Home" onClick={() => onClicked(item.zpid)}> 
-                    <div className="Home_Box_Image">
+                    <div className="Home_Box_Image" style={{backgroundImage:`url(${item.image})`}}>
                     </div>
                 </Link>  
                 </div>
                 <div className="Home_Sub_Cont">
-    <h1 className="Home_Title">{type}</h1>
+    {/* <h1 className="Home_Title">{type}</h1> */}
             <p className="Home_Sub_Address"><FaMapMarkerAlt/>{item.address}</p>
             <div className="Home_Sub_IconInfo">
 
@@ -43,10 +43,9 @@ const HomeBox = (item) => {
                 <p className="Home_Sub_Bed_Text">
                     <FaVectorSquare style={{marginRight:'.2rem'}} />  {item.sqft} sq ft
                 </p>
-            </div>
+            </div> 
             <div className="Home_Sub_Price_Cont">
-                <p className="Home_Sub_Price_Text">{item.rentzestimate}</p> 
-    <p className="Home_Sub_Price_Price">{price}
+    <p className="Home_Sub_Price_Price">{price}{item.rentzestimate}
     </p>
             </div>
                 </div>

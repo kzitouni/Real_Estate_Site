@@ -101,8 +101,10 @@ table {
 }
 
 .Header_left_text{
-  margin: auto 1.5rem;
   font-size: 14px;
+  /* align-items: center; */
+  display: flex;
+  justify-content: center;
 }
 
 .Header_Right_Cont {
@@ -119,7 +121,7 @@ table {
 }
 
 .State_Input_Cont {
-  margin: auto 2rem;
+  margin: auto 2rem auto 5.2rem;
   display: flex;
 }
 
@@ -140,24 +142,67 @@ table {
 .City_Input {
   margin: auto 0rem auto 2rem;
   border: none;
-  border-radius:2px;
+  border-radius: 2px;
   height: 1.5rem;
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5)
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  padding-left: 20px;
+  width: 10rem;
 }
 
-::placeholder {
-  padding: 1rem;
+.Back_Arrow {
+      /* text-align: center; */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      justify-items: center;
+      margin: auto;
+      height: 3rem;
+      color: $GreyTextColor;
+      margin: auto;
+      font-size: 22px;
+      transform: rotate(180deg);
 }
+
+.switch-wrapper {
+  position: relative;
+}
+ 
+.switch-wrapper > div {
+  position: absolute;
+}
+
+.Back_Button{
+  position: absolute;
+  /* margin-top: 3rem; */
+  height: 50px;
+  width: 50px;
+  /* right: 0; */
+  top: 50%;
+  background-color: white;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+  z-index: 3;
+  border-radius: 50%;
+  left: 46.7%;
+}
+
+// ::placeholder {
+//   padding: 1rem;
+// }
 
 .Page_Cont {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  // display: grid;
+  // grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(12, 1fr);
   // background-color: $BackgroundColor;
-  margin-left: 2rem;
+  // margin-left: 2rem;
+  height: 79vh;
+  display: flex;
 }
 
 .Search_Title{
-  margin: 1rem 3rem;
+  margin: 1rem 2rem;
   font-size: 1.5rem;
   font-weight: 500;
 }
@@ -169,35 +214,30 @@ table {
 }
 
 .Home_Box_Cont {
-  height: 17.5rem;
+  height: 16rem;
 }
 
 .Home_Box_Image {
-  height: 8rem;
-  width: 12rem;
-  // background-color: red;
+  height: 13rem;
+  width: 100%;
   justify-content: center;
-  // align-items: center;
   margin: auto auto auto auto;
-  background-size: contain;
-  background-image: url('https://media.istockphoto.com/photos/beautiful-living-room-interior-with-tall-vaulted-ceiling-loft-area-picture-id950127468?k=6&m=950127468&s=612x612&w=0&h=zN-7gp3knmm1wnltXF6-_CQ-5s2hkgB4r3y0ngluxQs=');
+  background-size: cover;
   border-radius: 7px;
-    // padding: 50px;
-    // background-color: green;
-    transition: transform .8s; /* Animation */
-    // width: 200px;
-    // height: 200px;
-    // margin: 0 auto;
+  transition: transform .8s;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .Home_Box_Image_Cont {
-  height: 8rem;
-  width: 12rem;
+  height: 60%;
+  width: 80%;
   justify-content: center;
   margin: 1rem auto auto auto;
   background-size: contain;
   overflow: hidden;
-  border-radius: 7px
+  border-radius: 7px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .Home_Box_Image:hover {
@@ -207,37 +247,38 @@ table {
 .Home_Title {
   text-align: center;
   margin-top: 1rem;
-  font-size: 17px;
+  font-size: 21px;
   margin-right: 1rem;
 }
 
 .Home_Sub_Address {
-  margin-top: .5rem;
-  font-size: 9px;
+  margin-top: .8rem;
+  font-size: 14px;
   margin-right: 1.5rem;
   color: $GreyTextColor;
   margin-left: .8rem;
+  font-weight: bold;
 }
 
 .Home_Sub_Cont {
-  width: 12rem;
+  width: 17.5rem;
   margin: auto;
 }
 
 .Home_Sub_IconInfo{
   display: flex;
-  margin-top: 1rem;
+  margin-top: .6rem;
   color: $GreyTextColor;
-  margin-left: .8rem;
+  margin-left: 1.05rem;
 }
 
 .Home_Sub_Bath_Text{
-  font-size: 9px;
+  font-size: 12px;
   display: flex;
 }
 
 .Home_Sub_Bed_Text {
-  font-size: 9px;
+  font-size: 12px;
   margin-left: 1rem;
   display: flex;
 }
@@ -246,9 +287,11 @@ table {
   width: 12rem;
   height: 3rem;
   border-radius: 7px;
-  margin-top: 1rem;
-  background-color: $BackgroundColor;
+  /* margin: auto; */
+  /* margin-top: .5rem; */
+  /* background-color: #fbf7f4; */
   display: flex;
+  margin-left: 1rem;
 }
 
 .Home_Sub_Price_Text {
@@ -261,43 +304,42 @@ table {
 }
 
 .Home_Sub_Price_Price {
-  margin: auto;
-  // margin-left: 2.8rem;
   color: $SecondaryColor;
   width: 6rem;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: .7rem;
 }
 
 .IndHome_LargeImage {
-  height: 16.3rem;
-  width: 25rem;
-  // background-color: red;
+  height: 17.5rem;
+  width: 23rem;
   justify-content: center;
-  // align-items: center;
   margin: auto auto auto auto;
-  background-size: contain;
-  background-image: url('https://media.istockphoto.com/photos/beautiful-living-room-interior-with-tall-vaulted-ceiling-loft-area-picture-id950127468?k=6&m=950127468&s=612x612&w=0&h=zN-7gp3knmm1wnltXF6-_CQ-5s2hkgB4r3y0ngluxQs=');
   border-radius: 7px;
-}
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}  
 
 .IndHome_Images_Cont {
   display: grid;
   /* grid-template-columns: repeat(10, 1fr); */
   grid-template:
-      "b a a" 90px
-      "c a a" 90px
-      "d a a" 90px / 1fr 1fr 1fr;
-  // height: 20rem;
-  grid-template-columns: 150px 200px 200px;
+      "b a a" 150px
+      "d a a" 150px / 1fr 1fr;
+  grid-template-columns: 230px 150px 150px;
 }
 
+
+
 .IndHome_SmallImage{
-  width: 8rem;
-  height: 5rem;
+  width: 12rem;
+  height: 8rem;
   margin: auto auto auto auto;
-    background-size: contain;
-    background-image: url('https://media.istockphoto.com/photos/beautiful-living-room-interior-with-tall-vaulted-ceiling-loft-area-picture-id950127468?k=6&m=950127468&s=612x612&w=0&h=zN-7gp3knmm1wnltXF6-_CQ-5s2hkgB4r3y0ngluxQs=');
+    background-size: cover;
+    background-image: url('https://www.battlegroundindy.com/wp-content/uploads/2019/01/no-image-770x466.jpg');
     border-radius: 7px;
     justify-content: center;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .IndHome_SmallImage_Dark {
@@ -306,32 +348,38 @@ table {
   height: 100%;
   opacity: 0.7;
   border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .IndHome_SmallImage_Dark_Icon {
   color: white;
-  font-size: 12px;
+  font-size: 18px;
   text-align: center;
-  padding: 2rem;
+  /* padding: 2rem; */
+  display: flex;
 }
 
 .IndHome_Text {
   height: 15rem;
+  width: 27rem;
 
 }
 
 .IndHome_Text_Title_Cont{
   height: 3rem;
-  display: flex;
+  display: grid;
   margin-left: 1rem;
   margin-top: 1rem;
+  grid-template: auto/ 250px 150px;
 }
 
 .IndHome_Text_Title_Price {
   font-size: 20px;
     font-weight: bold;
     color: $SecondaryColor;
-    margin-left: 13rem;
+    // margin-left: 13rem;
 }
 
 .IndHome_Text_Title_Add {
@@ -380,7 +428,7 @@ margin-left: 1rem;
 .IndHome_Text_Sub_Description {
   display: grid;
     /* grid-template-columns: repeat(4, 1fr); */
-    grid-template: auto/ 140px 1fr;
+    // grid-template: auto/ 140px 1fr;
     margin-top: .5rem;
 }
 
@@ -389,8 +437,268 @@ margin-left: 1rem;
 }
 
 .IndHome_Line {
-  width: 24rem;
-    display: flex;
-    text-align: left;
-    margin-right: 13.4rem
+  width: 26rem;
+  margin-right: 16.7rem;
+}
+
+.IndHome_Text_Sub_Description_Text {
+  margin-top: .4rem;
+  font-size: 12px;
+}
+
+.Map_Label_Cont {
+  width: 3rem;
+  height: 3rem;
+  background-size: cover;
+  border-radius: 5px;
+}
+
+.Map_Label_Street {
+  font-size: 13px;
+  color: $GreyTextColor;
+    font-weight: bold
+}
+
+.Map_Label_Price {
+  font-size: 10px;
+  color: $SecondaryColor;
+  font-weight: bold;
+  margin-top: .2rem;
+}
+
+.Map_Label_Bath {
+color: $GreyTextColor;
+display: flex;
+font-size: 12px;
+margin-left: .5rem;
+}
+
+.Map_Label_Bed {
+color: $GreyTextColor;
+display: flex;
+font-size: 12px;
+}
+
+.Map_Label_Bed_Icon {
+  margin-right: .2rem;
+}
+
+.Map_Label_Bath_Icon {
+  margin-right: .2rem;
+}
+
+.Search_Cont {
+  margin-left: 4rem;
+}
+
+.Search_Button {
+  background-color: $SecondaryColor;
+  border: 0;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  width: 7rem;
+  height: 1.8rem;
+}
+
+.Search_Text{
+  color: white;
+  display: flex;
+  font-size: 14px;
+}
+
+.Search_Icon {
+  margin-right: 1rem;
+  font-size: 18px;
+}
+
+.House_Info_Cont {
+  margin-left: 2rem;
+  overflow: auto;
+  // grid-column: 6 / 13
+  width: 50%;
+  position: relative;
+  margin-right: .5rem;
+}
+
+.Loader_Cont {
+  margin: auto
+}
+
+.Loader_Icon{
+  margin: auto auto 0px auto;
+  margin-top: 3rem;
+}
+
+.Loader_Text{
+  text-align: center;
+  color: rgb(252, 110, 100);
+  margin-top: 2rem;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.profile_cont {
+  width: 12rem;
+    height: 15rem;
+    // background-color: red;
+}
+
+.Profile_Pic{
+  width: 5rem;
+  height: 5rem;
+  margin: auto;
+  border-radius: 60px;
+  margin-top: .5rem;
+  background-image: url("https://randomuser.me/api/portraits/men/11.jpg");
+  background-size: contain;
+}
+
+.Profile_Name {
+  text-align: center;
+  margin-top: .5rem;
+}
+
+.Profile_Star {
+  display: flex;
+  /* margin: auto; */
+  text-align: center;
+  justify-content: center;
+  margin-top: .5rem;
+}
+
+.Profile_Star_Icon {
+  color: gold;
+    font-size: 13px;
+}
+
+.Profile_Star_Text {
+  font-size: 13px;
+    text-align: center;
+    align-items: center;
+    margin-left: .3rem;
+    color: $GreyTextColor;
+}
+
+.Prop_Text{
+  font-size: 12px;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.Profile_Bottom_Cont{
+  width: 100%;
+  height: 8rem;
+  // background-color: blue;
+  // background-color: #f2f2f2;
+  margin: auto;
+  display: flex;
+}
+
+.Profile_Button_Cont {
+  text-align: center;
+  width: 9rem;
+  height: 2rem;
+  /* background-color: yellow; */
+  margin: auto;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  border-radius: 7px;
+}
+
+.Profile_Button {
+  width: 100%;
+  border-radius: 7px;
+  border: 0;
+  display: flex;
+  justify-content: center;
+  background-color: $SecondaryColor;
+  color: white;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  cursor: pointer;
+}
+
+.Contact_Text {
+  display: flex;
+  font-size: 14px;
+  align-items: center;
+}
+
+.Mail_Icon {
+  font-size: 19px;
+  margin-right: .6rem;
+}
+
+.Header_Button {
+  border: none;
+  background-color: white;
+  /* width: 100%; */
+  /* margin: auto 1.5rem; */
+  /* margin-top: 1rem; */
+  height: 3.5rem;
+  margin-left: 2.5rem;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.Header_Link_Text {
+  text-decoration: none;
+  color: black;
+}
+
+.Header_Active {
+  color: $SecondaryColor;
+}
+
+.Right_Side_Cont {
+  overflow:auto;
+  margin-right: .5rem;
+  width:50%
+}
+
+.Right_Side_Cont ::-webkit-scrollbar-track
+{
+	/*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;*/
+}
+
+.Right_Side_Cont::-webkit-scrollbar
+{
+  width: 8px;
+	/*background-color: #F5F5F5;*/
+}
+
+.Right_Side_Cont::-webkit-scrollbar-thumb {
+	border-radius: 6px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
+.Right_Side_Cont::-webkit-scrollbar-thumb:active {
+	border-radius: 8px;
+  -webkit-box-shadow: 0 0 1px 1px hsla(0,0%,100%,.25);
+}
+
+.House_Info_Cont ::-webkit-scrollbar-track
+{
+	/*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;*/
+}
+
+.House_Info_Cont::-webkit-scrollbar
+{
+  width: 8px;
+	/*background-color: #F5F5F5;*/
+}
+
+.House_Info_Cont::-webkit-scrollbar-thumb {
+	border-radius: 6px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
+.House_Info_Cont::-webkit-scrollbar-thumb:active {
+	border-radius: 8px;
+  -webkit-box-shadow: 0 0 1px 1px hsla(0,0%,100%,.25);
 }

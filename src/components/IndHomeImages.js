@@ -1,30 +1,69 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import {AiOutlinePicture} from "react-icons/ai";
 import {FaRegImage} from "react-icons/fa"
 import IndHomeText from './IndHomeText';
+import { Context } from '../Functions/SearchFetch';
+import RealEstateProfile from './RealEstateProfile';
+import { Gallery, GalleryImage } from "react-gesture-gallery";
+import {AiOutlineDoubleLeft} from 'react-icons/ai'
+import {Link} from 'react-router-dom' 
+// import { Carousel } from 'react-responsive-carousel';
+// import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+// import Carousel from 'react-bootstrap/Carousel'
 const IndHome = () => {
+    const {house} = useContext(Context)
+    const [index, setIndex] = useState(0);
+let imageLength = house.result.images != undefined ? house.result.images.count._text : 1
+let image1 = house.result.images != undefined ? (imageLength > 1 ? house.result.images.image.url[0]._text : house.result.images.image.url._text) : house.image
+let image2 = house.result.images != undefined ? (imageLength > 1 ? house.result.images.image.url[1]._text : null) : null
+let image3 = house.result.images != undefined ? (imageLength > 2 ? house.result.images.image.url[2]._text : null) : null
 return (
-    <div>
+    <div className="House_Info_Cont">
         <div className="IndHome_Images_Cont">
-        <div className="IndHome_SmallImage" style={{gridArea:'b'}}>
-                    </div>
-                    <div className="IndHome_SmallImage" style={{gridArea:'c'}}>
-                    </div>
-                    <div className="IndHome_SmallImage" style={{gridArea:'d'}}>
+        <div className="IndHome_SmallImage" style={{gridArea:'b', backgroundImage: image2 == null ? 
+        `url("https://www.battlegroundindy.com/wp-content/uploads/2019/01/no-image-770x466.jpg")` : `url(${image2})`}}>
+                    </div> 
+                    <div className="IndHome_SmallImage" style={{gridArea:'d', backgroundImage: image3 == null ? 
+        `url("https://www.battlegroundindy.com/wp-content/uploads/2019/01/no-image-770x466.jpg")` : `url(${image3})`}}>
                         <div className="IndHome_SmallImage_Dark">
                          <p className="IndHome_SmallImage_Dark_Icon">
-                            <FaRegImage /> 14     
+                            <FaRegImage style={{marginRight: ".3rem"}} /> {imageLength > 5 ? "5" : imageLength}     
                         </p>   
                         </div>
                     </div>
-        <div className="IndHome_LargeImage" style={{gridArea:'a'}}>
-
+        
+        { house.image != null ? <div className="IndHome_LargeImage" style={{gridArea:'a', background:`url(${image1}) no-repeat center center white`}}>
+        </div> : imageLength == 1 ? <div className="IndHome_LargeImage" style={{gridArea:'a', background:`url(${image1}) no-repeat center center white`}}>
+        </div> : <div         className="IndHome_LargeImage" style={{gridArea:'a'}}>
+        <Gallery 
+        index={index}
+        onRequestChange={i => {
+            setIndex(i);
+        }}
+        >
+        {(house != undefined) ?  
+        house.result.images.image.url.map(img => (
+            <GalleryImage  objectFit="contain" key={img._text} src={img._text} />
+            )) : null}
+      </Gallery>
+        {/* <Slide {...properties}>
+            {house != undefined ? house.result.images.image.url.map((item) => (
+         <div className="IndHome_LargeImage" style={{gridArea:'a', backgroundImage:`url(${item._text})`}}>
+             </div>
+            )) : null}
+        </Slide> */}
+        </div>}
         </div>
 
-        </div>
-        <IndHomeText />
+<div style={{display: 'flex'}}>
+            <IndHomeText />
+            <RealEstateProfile />
+                </div>
     </div>
 )
+
 }
+
+
 
 export default IndHome

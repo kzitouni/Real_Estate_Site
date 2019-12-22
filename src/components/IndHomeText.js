@@ -13,12 +13,10 @@ return(
 <h1 className="IndHome_Text_Title_Add">{house.result.address.street._text}, {house.result.address.state._text}</h1>
 <p className="IndHome_Text_Title_City">{house.result.address.city._text}</p>
             </div>
-        <h1 className="IndHome_Text_Title_Price">{house.zestimate != undefined ? "$" + house.zestimate : "$" + house.rentzestimate + " /month"}</h1>
-        <div>
-        </div>
-        <IoIosHeartEmpty style={{marginLeft: '3rem'}} />
+        <h1 className="IndHome_Text_Title_Price">{house.zestimate != undefined ? "$" + house.zestimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "$" + house.rentzestimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " /Month"}</h1>
         </div>
         <hr className="IndHome_Line" />
+        <div style={{display:'flex'}}>
         <div className="IndHome_Text_Sub_Info">
             <div className="IndHome_Text_Sub_1stRow">
                 <div className="IndHome_Text_Sub_Bed">
@@ -60,9 +58,13 @@ return(
             </div>
             <div className="IndHome_Text_Sub_Description">
                 <h1 className="IndHome_Text_Sub_Description_Title">Description</h1>
-                <p className="IndHome_Text_Sub_Description_Text">{house.result.Description != undefined ? house.result.Description : "Description not provided."}</p>
+                <p className="IndHome_Text_Sub_Description_Text">{house.result.homeDescription != undefined ? house.result.homeDescription._text : "Description not provided."}</p>
             </div>
         </div>
+        <div>
+
+        </div>
+    </div>
         
     </div>
 )
