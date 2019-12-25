@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import HomeBox from "./HomeBox";
-import { Context } from "../Functions/SearchFetch";
+import { Context } from "../../Functions/SearchFetch";
 import ReactLoading from "react-loading";
 
 const HomeBoxMapped = () => {

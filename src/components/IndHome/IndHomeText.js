@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import { IoIosHeartEmpty, IoIosBed } from "react-icons/io";
-import { FaMapMarkerAlt, FaBath, FaVectorSquare } from "react-icons/fa";
-import { Context } from "../Functions/SearchFetch";
+import { IoIosBed } from "react-icons/io";
+import { FaBath, FaVectorSquare } from "react-icons/fa";
+import { Context } from "../../Functions/SearchFetch";
 const IndHomeText = () => {
   const { house } = useContext(Context);
   console.log(house, "housey");

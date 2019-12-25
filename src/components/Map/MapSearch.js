@@ -7,13 +7,13 @@ import {
   InfoWindow
 } from "react-google-maps";
 import { mapStyles } from "./mapStyles";
-import { Context } from "../Functions/SearchFetch";
+import { Context } from "../../Functions/SearchFetch";
 import { AiOutlineHome, AiOutlineDoubleLeft } from "react-icons/ai";
-import { FaMapMarkerAlt, FaBath, FaVectorSquare } from "react-icons/fa";
+import { FaBath } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { IoIosBed } from "react-icons/io";
 const Mapp = () => {
-  const { final, house, setHouse, back } = useContext(Context);
+  const { final } = useContext(Context);
 
   const [selectedHouse, setSelectedHouse] = useState(null);
 

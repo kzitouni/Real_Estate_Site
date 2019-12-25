@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
-import HomeBox from "./HomeBox";
 import HomeBoxMapped from "./HomeBoxMapped";
-import { Context } from "../Functions/SearchFetch";
+import { Context } from "../../Functions/SearchFetch";
 const HomeResultsCont = () => {
   const { addy, setBack } = useContext(Context);
   setBack(false);

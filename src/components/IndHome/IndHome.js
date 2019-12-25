@@ -1,12 +1,9 @@
 import React, { useContext, useState } from "react";
-import { AiOutlinePicture } from "react-icons/ai";
 import { FaRegImage } from "react-icons/fa";
 import IndHomeText from "./IndHomeText";
-import { Context } from "../Functions/SearchFetch";
+import { Context } from "../../Functions/SearchFetch";
 import RealEstateProfile from "./RealEstateProfile";
 import { Gallery, GalleryImage } from "react-gesture-gallery";
-import { AiOutlineDoubleLeft } from "react-icons/ai";
-import { Link } from "react-router-dom";
 const IndHome = () => {
   const { house } = useContext(Context);
   const [index, setIndex] = useState(0);

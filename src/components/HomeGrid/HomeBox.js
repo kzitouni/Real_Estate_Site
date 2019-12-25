@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { FaMapMarkerAlt, FaBath, FaVectorSquare } from "react-icons/fa";
 import { IoIosBed } from "react-icons/io";
-import { Context } from "../Functions/SearchFetch";
+import { Context } from "../../Functions/SearchFetch";
 import { Link } from "react-router-dom";
 var convert = require("xml-js");
 

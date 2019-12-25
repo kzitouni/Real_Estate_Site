@@ -2,11 +2,6 @@ import React, { useState } from "react";
 import { FaHome } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 const Headerbar = () => {
-  const [selected, setSelected] = useState({
-    color: "#fc6e64",
-    borderBottom: "2px solid #fc6e64"
-  });
-  const [unselected, setUnselected] = useState();
   return (
     <div style={{ display: "flex" }}>
       <div className="Header_Cont">

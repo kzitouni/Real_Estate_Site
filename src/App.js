@@ -1,13 +1,11 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.scss";
 import Headerbar from "./components/Headerbar";
 import Searchbar from "./components/Searchbar";
-import HomeResults from "./components/HomeResultsCont";
-import MapSearch from "./components/MapSearch";
+import HomeResults from "./components/HomeGrid/HomeResultsCont";
+import MapSearch from "./components/Map/MapSearch";
 import { Switch, Route } from "react-router-dom";
-import IndHome from "./components/IndHome";
-import Infos from "./components/Infos";
+import IndHome from "./components/IndHome/IndHome";
 import Header from "./components/InfoPage/Header";
 import Section1 from "./components/InfoPage/Section1";
 import Section2 from "./components/InfoPage/Section2";
@@ -20,7 +18,7 @@ function App() {
       <Headerbar />
       <Switch>
         <Route exact path="/">
-          <Searchbar />
+          <Searchbar /> 
           <div className="Page_Cont">
             <MapSearch />
             <HomeResults />

@@ -12,26 +12,28 @@ const SearchFetch = ({ children }) => {
   const [total, setTotal] = useState();
   const [isLoading, setIsLoading] = useState("false");
   const [addy, setAddy] = useState({
-    add: "800 devon st",
-    cit: "Kearny",
-    sta: "nj"
+    add: "140 Sunset ave",
+    cit: "North Arlington",
+    sta: "nj",
+    first: true
   });
-  const [address, setAddress] = useState("800 devon st");
-  const [second, setSecond] = useState("");
-  const [city, setCity] = useState("Kearny");
-  const [state, setState] = useState("nj");
   const [back, setBack] = useState(false);
   let Url = `http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz1hixiuj93ij_6plsv&address=${addy.add}&citystatezip=${addy.cit}%2C+${addy.sta}&rentzestimate=true`;
   let AreaUrl = `http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz1hixiuj93ij_6plsv&address=St&citystatezip=${addy.cit}%2C+${addy.sta}&rentzestimate=true`;
-  let first = false;
   const fetchData = async () => {
     setResult([]);
     setFinal([]);
-    console.log(result, "firstres");
     const res = await fetch(Url);
     res.text().then(data => {
-      console.log(data);
-      if (
+      if(
+        JSON.parse(
+          convert.xml2json(data, {
+            compact: true,
+            spaces: 4
+          })
+        )["SearchResults:searchresults"].message.code._text != "0"
+      && addy.first == false) {return null}
+      else if (
         JSON.parse(
           convert.xml2json(data, {
             compact: true,
@@ -39,7 +41,7 @@ const SearchFetch = ({ children }) => {
           })
         )["SearchResults:searchresults"].message.code._text != "0"
       ) {
-        setAddress("st") && fetchData();
+        setAddy({add: "st", cit: addy.cit, sta: addy.sta, first: false}) && fetchData();
       } else {
         if (
           JSON.parse(
@@ -234,11 +236,7 @@ const SearchFetch = ({ children }) => {
   };
 
   const onSearch = (add, cit, sta) => {
-    setAddy({ add: add, cit: cit, sta: sta });
-
-    setAddress(add);
-    setCity(cit);
-    setState(sta);
+    setAddy({ add: add, cit: cit, sta: sta, first: true });
     setIsLoading("false");
     setFinal([]);
     setResult([]);
