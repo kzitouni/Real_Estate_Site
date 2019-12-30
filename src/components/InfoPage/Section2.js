@@ -21,7 +21,9 @@ const Section2 = props => {
           <div
             className="Info_Page_Middle_Image2"
             style={{ backgroundImage: `url(${props.menu[2]})` }}
-          ></div>
+          >
+            <div></div>
+          </div>
         </div>
       </div>
       <div className="Info_Page_Bottom_Blue">

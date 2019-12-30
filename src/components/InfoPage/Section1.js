@@ -7,7 +7,9 @@ const Section1 = props => {
         <div
           className="Info_Page_Middle_Image"
           style={{ backgroundImage: `url(${props.menu[1]})` }}
-        ></div>
+        >
+          <div></div>
+        </div>
         <div className="Info_Page_Middle_Text_Cont">
           <h1 className="Info_Page_Middle_Text" style={{ fontSize: "50px" }}>
             {Section1text[0]}
