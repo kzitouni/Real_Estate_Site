@@ -39,7 +39,7 @@ const SearchFetch = ({ children }) => {
             compact: true,
             spaces: 4
           })
-        )["SearchResults:searchresults"].message.code._text != "0"
+        )["SearchResults:searchresults"].message.code._text != "0" && addy.first == true
       ) {
         setAddy({add: "st", cit: addy.cit, sta: addy.sta, first: false}) && fetchData();
       } else {
