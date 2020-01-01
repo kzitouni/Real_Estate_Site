@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FetchError } from "node-fetch";
 import DefaultHome from "../DefaultHome";
-
+import axios from 'axios'
 var convert = require("xml-js");
 const Context = React.createContext();
 
@@ -18,119 +18,101 @@ const SearchFetch = ({ children }) => {
     first: true
   });
   const [back, setBack] = useState(false);
+
+  const GetHouseData = async(item) => {
+    try {
+      let Data = await axios.get(`/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz1hixiuj93ij_6plsv&zpid=${item.zpid}`)
+      return JSON.parse(
+        convert.xml2json(`${Data.data}`, {
+          compact: true,
+          spaces: 4
+        })
+      )
+      // return new DOMParser().parseFromString(resp, "application/xml")
+    }
+    catch (error) {
+      console.log(error)
+    }
+  }
+
+  const GetArea = async() => {
+    try {
+      let Data = await axios.get(`/GetDeepSearchResults.htm?zws-id=X1-ZWz1hixiuj93ij_6plsv&address=St&citystatezip=${addy.cit}%2C+${addy.sta}&rentzestimate=true`)
+      return JSON.parse(
+        convert.xml2json(`${Data.data}`, {
+          compact: true,
+          spaces: 4
+        })
+      )
+      // return new DOMParser().parseFromString(resp, "application/xml")
+    }
+    catch (error) {
+      console.log(error)
+    }
+  }
+
+  const GetData = async() => {
+    try {
+      let Data = await axios.get(`/GetDeepSearchResults.htm?zws-id=X1-ZWz1hixiuj93ij_6plsv&address=${addy.add}&citystatezip=${addy.cit}%2C+${addy.sta}&rentzestimate=true`)
+      return JSON.parse(
+        convert.xml2json(`${Data.data}`, {
+          compact: true,
+          spaces: 4
+        })
+      )
+      // return new DOMParser().parseFromString(resp, "application/xml")
+    }
+    catch (error) {
+      console.log(error)
+    }
+  }
   let Url = `http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz1hixiuj93ij_6plsv&address=${addy.add}&citystatezip=${addy.cit}%2C+${addy.sta}&rentzestimate=true`;
   let AreaUrl = `http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz1hixiuj93ij_6plsv&address=St&citystatezip=${addy.cit}%2C+${addy.sta}&rentzestimate=true`;
   const fetchData = async () => {
     setResult([]);
     setFinal([]);
-    const res = await fetch(Url);
-    res.text().then(data => {
+    GetData().then( dat => {
       if(
-        JSON.parse(
-          convert.xml2json(data, {
-            compact: true,
-            spaces: 4
-          })
-        )["SearchResults:searchresults"].message.code._text != "0"
-      && addy.first == false) {return null}
+      dat["SearchResults:searchresults"].message.code._text != "0"
+      && addy.first == false) {return setIsLoading("none")}
       else if (
-        JSON.parse(
-          convert.xml2json(data, {
-            compact: true,
-            spaces: 4
-          })
-        )["SearchResults:searchresults"].message.code._text != "0" && addy.first == true
+        dat["SearchResults:searchresults"].message.code._text != "0" && addy.first == true
       ) {
         setAddy({add: "st", cit: addy.cit, sta: addy.sta, first: false}) && fetchData();
       } else {
         if (
-          JSON.parse(
-            convert.xml2json(data, {
-              compact: true,
-              spaces: 4
-            })
-          )["SearchResults:searchresults"].response.results.result.length ==
+          dat["SearchResults:searchresults"].response.results.result.length ==
           undefined
         ) {
           result.push({
-            zpid: JSON.parse(
-              convert.xml2json(data, {
-                compact: true,
-                spaces: 4
-              })
-            )["SearchResults:searchresults"].response.results.result.zpid._text,
+            zpid: dat["SearchResults:searchresults"].response.results.result.zpid._text,
             rentzestimate:
-              JSON.parse(
-                convert.xml2json(data, {
-                  compact: true,
-                  spaces: 4
-                })
-              )["SearchResults:searchresults"].response.results.result
+              dat["SearchResults:searchresults"].response.results.result
                 .rentzestimate.amount != undefined
-                ? JSON.parse(
-                    convert.xml2json(data, {
-                      compact: true,
-                      spaces: 4
-                    })
-                  )["SearchResults:searchresults"].response.results.result
+                ? dat["SearchResults:searchresults"].response.results.result
                     .rentzestimate.amount._text
                 : null,
             zestimate:
-              JSON.parse(
-                convert.xml2json(data, {
-                  compact: true,
-                  spaces: 4
-                })
-              )["SearchResults:searchresults"].response.results.result.zestimate
+              dat["SearchResults:searchresults"].response.results.result.zestimate
                 .amount._text != undefined
-                ? JSON.parse(
-                    convert.xml2json(data, {
-                      compact: true,
-                      spaces: 4
-                    })
-                  )["SearchResults:searchresults"].response.results.result
+                ? dat["SearchResults:searchresults"].response.results.result
                     .zestimate.amount._text
                 : null
           }) && fetchArea();
         } else {
           result.push({
-            zpid: JSON.parse(
-              convert.xml2json(data, {
-                compact: true,
-                spaces: 4
-              })
-            )["SearchResults:searchresults"].response.results.result[0].zpid
+            zpid: dat["SearchResults:searchresults"].response.results.result[0].zpid
               ._text,
             rentzestimate:
-              JSON.parse(
-                convert.xml2json(data, {
-                  compact: true,
-                  spaces: 4
-                })
-              )["SearchResults:searchresults"].response.results.result[0]
+              dat["SearchResults:searchresults"].response.results.result[0]
                 .rentzestimate != undefined
-                ? JSON.parse(
-                    convert.xml2json(data, {
-                      compact: true,
-                      spaces: 4
-                    })
-                  )["SearchResults:searchresults"].response.results.result[0]
+                ? dat["SearchResults:searchresults"].response.results.result[0]
                     .rentzestimate.amount._text
                 : null,
             zestimate:
-              JSON.parse(
-                convert.xml2json(data, {
-                  compact: true,
-                  spaces: 4
-                })
-              )["SearchResults:searchresults"].response.results.result[0]
+              dat["SearchResults:searchresults"].response.results.result[0]
                 .zestimate != undefined
-                ? JSON.parse(
-                    convert.xml2json(data, {
-                      compact: true,
-                      spaces: 4
-                    })
-                  )["SearchResults:searchresults"].response.results.result[0]
+                ? dat["SearchResults:searchresults"].response.results.result[0]
                     .zestimate.amount._text
                 : null
           }) && fetchArea();
@@ -140,16 +122,7 @@ const SearchFetch = ({ children }) => {
   };
 
   async function fetchArea() {
-    const res = await fetch(AreaUrl);
-    res
-      .text()
-      .then(data => {
-        JSON.parse(
-          convert.xml2json(data, {
-            compact: true,
-            spaces: 4
-          })
-        )["SearchResults:searchresults"].response.results.result.map(
+   GetArea().then( data => {data["SearchResults:searchresults"].response.results.result.map(
           (item, index) => {
             result.push({
               zpid: item.zpid._text,
@@ -164,7 +137,7 @@ const SearchFetch = ({ children }) => {
             });
           }
         );
-      })
+        })
       .then(dat => fetchFinal());
   }
 
@@ -175,45 +148,35 @@ const SearchFetch = ({ children }) => {
     Promise.all(
       result.map(async (item, index) => {
         setFinal([]);
-        let UpdateUrl = `http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz1hixiuj93ij_6plsv&zpid=${item.zpid}`;
-        const res = await fetch(UpdateUrl);
-        res
-          .text()
+        // let UpdateUrl = `http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz1hixiuj93ij_6plsv&zpid=${item.zpid}`;
+        // const res = await fetch(UpdateUrl);
+        // res
+        //   .text()
+        //   .then(data => {
+        //     return JSON.parse(
+        //       convert.xml2json(data, {
+        //         compact: true,
+        //         spaces: 4
+        //       })
+        //     )
+        //   }) 
+        GetHouseData(item)
           .then(data =>
-            JSON.parse(
-              convert.xml2json(data, {
-                compact: true,
-                spaces: 4
-              })
-            )["UpdatedPropertyDetails:updatedPropertyDetails"].response !=
+            data["UpdatedPropertyDetails:updatedPropertyDetails"].response !=
             undefined
               ? final.push({
-                  result: JSON.parse(
-                    convert.xml2json(data, {
-                      compact: true,
-                      spaces: 4
-                    })
-                  )["UpdatedPropertyDetails:updatedPropertyDetails"].response,
+                  result: data["UpdatedPropertyDetails:updatedPropertyDetails"].response,
                   zpid: item.zpid,
                   zestimate: item.zestimate,
                   rentzestimate: item.rentzestimate,
                   image:
-                    JSON.parse(
-                      convert.xml2json(data, {
-                        compact: true,
-                        spaces: 4
-                      })
-                    )["UpdatedPropertyDetails:updatedPropertyDetails"].response
+                    data["UpdatedPropertyDetails:updatedPropertyDetails"].response
                       .images == undefined
                       ? `https://maps.googleapis.com/maps/api/streetview?size=400x400&location=${
-                          JSON.parse(
-                            convert.xml2json(data, { compact: true, spaces: 4 })
-                          )["UpdatedPropertyDetails:updatedPropertyDetails"]
+                          data["UpdatedPropertyDetails:updatedPropertyDetails"]
                             .response.address.latitude._text
                         },${
-                          JSON.parse(
-                            convert.xml2json(data, { compact: true, spaces: 4 })
-                          )["UpdatedPropertyDetails:updatedPropertyDetails"]
+                          data["UpdatedPropertyDetails:updatedPropertyDetails"]
                             .response.address.longitude._text
                         }&fov=80&heading=70&pitch=0&key=AIzaSyDcXNX_SoIFTdYVs0QPk8e9ST6e9YwwN2c`
                       : null

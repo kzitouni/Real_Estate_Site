@@ -32,6 +32,7 @@ const HomeBoxMapped = () => {
       </div>
     );
     setTimeout(() => {
+      console.log(isLoading,"finalllllll")
       setLoad(
         <div className="Loader_Cont">
           <h1 className="Loader_Text">
