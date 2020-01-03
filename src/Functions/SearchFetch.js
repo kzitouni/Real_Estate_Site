@@ -21,7 +21,8 @@ const SearchFetch = ({ children }) => {
 
   const GetHouseData = async(item) => {
     try {
-      let Data = await axios.get(`/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz1hixiuj93ij_6plsv&zpid=${item.zpid}`)
+      let Data = await axios.get(`http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz1hixiuj93ij_6plsv&zpid=${item.zpid}`)
+      console.log(Data)
       return JSON.parse(
         convert.xml2json(`${Data.data}`, {
           compact: true,
