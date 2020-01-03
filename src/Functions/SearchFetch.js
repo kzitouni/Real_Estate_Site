@@ -38,7 +38,7 @@ const SearchFetch = ({ children }) => {
 
   const GetArea = async() => {
     try {
-      let Data = await axios.get(`/GetDeepSearchResults.htm?zws-id=X1-ZWz1hixiuj93ij_6plsv&address=St&citystatezip=${addy.cit}%2C+${addy.sta}&rentzestimate=true`)
+      let Data = await axios.get(`http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz1hixiuj93ij_6plsv&address=St&citystatezip=${addy.cit}%2C+${addy.sta}&rentzestimate=true`)
       return JSON.parse(
         convert.xml2json(`${Data.data}`, {
           compact: true,
@@ -54,7 +54,7 @@ const SearchFetch = ({ children }) => {
 
   const GetData = async() => {
     try {
-      let Data = await axios.get(`/GetDeepSearchResults.htm?zws-id=X1-ZWz1hixiuj93ij_6plsv&address=${addy.add}&citystatezip=${addy.cit}%2C+${addy.sta}&rentzestimate=true`)
+      let Data = await axios.get(`http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz1hixiuj93ij_6plsv&address=${addy.add}&citystatezip=${addy.cit}%2C+${addy.sta}&rentzestimate=true`)
       return JSON.parse(
         convert.xml2json(`${Data.data}`, {
           compact: true,
