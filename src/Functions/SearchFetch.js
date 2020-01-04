@@ -38,7 +38,7 @@ const SearchFetch = ({ children }) => {
 
   const GetArea = async() => {
     try {
-      let Data = await axios.get(`https://7ohlgtw9j3.execute-api.us-east-1.amazonaws.com/Info?address=St&citystatezip=${addy.cit}%2C+${addy.sta}&rentzestimate=true`)
+      let Data = await axios.get(`https://7ohlgtw9j3.execute-api.us-east-1.amazonaws.com/Info?addr=St&city=${addy.cit}&state=${addy.sta}&rentzestimate=true`)
       return JSON.parse(
         convert.xml2json(`${Data.data}`, {
           compact: true,
@@ -54,7 +54,7 @@ const SearchFetch = ({ children }) => {
 
   const GetData = async() => {
     try {
-      let Data = await axios.get(`https://7ohlgtw9j3.execute-api.us-east-1.amazonaws.com/House?address=${addy.add}&citystatezip=${addy.cit}%2C+${addy.sta}&rentzestimate=true`)
+      let Data = await axios.get(`https://7ohlgtw9j3.execute-api.us-east-1.amazonaws.com/House?addr=${addy.add}&city=${addy.cit}&state=${addy.sta}`)
       return JSON.parse(
         convert.xml2json(`${Data.data}`, {
           compact: true,
