@@ -21,7 +21,7 @@ const SearchFetch = ({ children }) => {
 
   const GetHouseData = async(item) => {
     try {
-      let Data = await axios.get(`https://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz1hixiuj93ij_6plsv&zpid=${item.zpid}`)
+      let Data = await axios.get(`/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz1hixiuj93ij_6plsv&zpid=${item.zpid}`)
       console.log(Data)
       return JSON.parse(
         convert.xml2json(`${Data.data}`, {
@@ -38,7 +38,7 @@ const SearchFetch = ({ children }) => {
 
   const GetArea = async() => {
     try {
-      let Data = await axios.get(`https://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz1hixiuj93ij_6plsv&address=St&citystatezip=${addy.cit}%2C+${addy.sta}&rentzestimate=true`)
+      let Data = await axios.get(`/GetDeepSearchResults.htm?zws-id=X1-ZWz1hixiuj93ij_6plsv&address=St&citystatezip=${addy.cit}%2C+${addy.sta}&rentzestimate=true`)
       return JSON.parse(
         convert.xml2json(`${Data.data}`, {
           compact: true,
@@ -54,7 +54,7 @@ const SearchFetch = ({ children }) => {
 
   const GetData = async() => {
     try {
-      let Data = await axios.get(`https://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz1hixiuj93ij_6plsv&address=${addy.add}&citystatezip=${addy.cit}%2C+${addy.sta}&rentzestimate=true`)
+      let Data = await axios.get(`/GetDeepSearchResults.htm?zws-id=X1-ZWz1hixiuj93ij_6plsv&address=${addy.add}&citystatezip=${addy.cit}%2C+${addy.sta}&rentzestimate=true`)
       return JSON.parse(
         convert.xml2json(`${Data.data}`, {
           compact: true,
@@ -149,18 +149,6 @@ const SearchFetch = ({ children }) => {
     Promise.all(
       result.map(async (item, index) => {
         setFinal([]);
-        // let UpdateUrl = `http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz1hixiuj93ij_6plsv&zpid=${item.zpid}`;
-        // const res = await fetch(UpdateUrl);
-        // res
-        //   .text()
-        //   .then(data => {
-        //     return JSON.parse(
-        //       convert.xml2json(data, {
-        //         compact: true,
-        //         spaces: 4
-        //       })
-        //     )
-        //   }) 
         GetHouseData(item)
           .then(data =>
             data["UpdatedPropertyDetails:updatedPropertyDetails"].response !=

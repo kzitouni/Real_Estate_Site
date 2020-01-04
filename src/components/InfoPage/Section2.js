@@ -1,5 +1,7 @@
 import React from "react";
 import { Section2text } from "./Text";
+import ScrollAnimation from 'react-animate-on-scroll';
+import "animate.css/animate.min.css";
 const Section2 = props => {
   return (
     <div>
@@ -9,6 +11,7 @@ const Section2 = props => {
       >
         <div className="Info_Page_Bluebox">
           <div className="Info_Page_Middle_Text_Cont2">
+          <ScrollAnimation  animateIn='fadeInUp' animateOnce='true'>
             <h1
               className="Info_Page_Middle_Text"
               style={{ color: "white", fontSize: "50px" }}
@@ -17,10 +20,14 @@ const Section2 = props => {
               {Section2text[0]}
             </h1>
             <p className="Info_Page_Middle_Ptext_grey">{Section2text[1]}</p>
+            </ScrollAnimation>
           </div>
+          <ScrollAnimation  animateIn='fadeInUp' animateOnce='true'  className="Info_Page_Middle_Image2"
+            >
+              <img src={props.menu[2]} className="Info_Page_Middle_Image2"/>
+          </ScrollAnimation>
           <div
-            className="Info_Page_Middle_Image2"
-            style={{ backgroundImage: `url(${props.menu[2]})` }}
+           
           >
             <div></div>
           </div>
