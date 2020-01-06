@@ -29,17 +29,17 @@ const Mapp = () => {
       defaultZoom={10}
       defaultCenter={{
         lat:
-          final[0] != undefined
+          final != false
             ? Number(final[0].result.address.latitude._text)
             : 40.654936,
         lng:
-          final[0] != undefined
+          final != false
             ? Number(final[0].result.address.longitude._text)
             : -74.120344
       }}
       defaultOptions={{ styles: mapStyles }}
     >
-      {final.map(item => (
+      {final != false ? final.map(item => (
         <Marker
           key={item.zpid}
           position={{
@@ -52,7 +52,7 @@ const Mapp = () => {
             scaledSize: new window.google.maps.Size(40, 40)
           }}
         />
-      ))}
+      )) : null}
 
       {selectedHouse && (
         <InfoWindow

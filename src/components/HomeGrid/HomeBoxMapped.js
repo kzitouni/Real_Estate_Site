@@ -17,33 +17,33 @@ const HomeBoxMapped = () => {
       <h1 className="Loader_Text">Searching</h1>
     </div>
   );
-  let Element;
   useEffect(() => {
-    setLoad(
-      <div className="Loader_Cont">
-        <ReactLoading
-          type={"spinningBubbles"}
-          color={"#fc6e64"}
-          height={"100%"}
-          width={"20%"}
-          className="Loader_Icon"
-        />
-        <h1 className="Loader_Text">Searching</h1>
-      </div>
-    );
-    setTimeout(() => {
-      console.log(isLoading,"finalllllll")
+    if(final === false){
       setLoad(
         <div className="Loader_Cont">
           <h1 className="Loader_Text">
             We could not find that search. Please try again
           </h1>
         </div>
-      );
-    }, [10000]);
+      )
+}
+else if (final == []){
+    setLoad(
+    <div className="Loader_Cont">
+      <ReactLoading
+        type={"spinningBubbles"}
+        color={"#fc6e64"}
+        height={"100%"}
+        width={"20%"}
+        className="Loader_Icon"
+      />
+      <h1 className="Loader_Text">Searching</h1>
+    </div>
+  )
+}
   }, [final]);
 
-  if (final != ([] || undefined) && final.length > 3 && isLoading == "true") {
+  if (final != false) {
     return (
       <div className="Home_Box_Grid">
         {
@@ -101,22 +101,12 @@ const HomeBoxMapped = () => {
         }
       </div>
     );
-  } else if (isLoading == "true" && result == []) {
-    console.log(isLoading, "the 2nd if");
-    console.log(result, "if 2nd res");
-    return fetchData();
-  } else {
-    return load;
+  }  
+// 
+  else {
+    return load
   }
 
-  // console.log(isLoading,"loadin")
-
-  //     console.log(result,"resy")
-  //     return (
-  //         <div className="Home_Box_Grid">
-  //             {Element}
-  //         </div>
-  //     )
 };
 
 export default HomeBoxMapped;

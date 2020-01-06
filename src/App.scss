@@ -933,9 +933,9 @@ text-align: center;
 .Info_Page_Middle_Ptext_grey {
   font-size:20px; 
   color:#a6a9b3;
-}
+} 
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1105px) {
   .Home_Box_Grid {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -947,13 +947,13 @@ text-align: center;
   }
 }
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1005px) {
 .profile_cont {
   display: none;
 }
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 550px) {
 .House_Info_Cont {
   width: 100%; 
 } 
