@@ -27,9 +27,9 @@ const HomeBoxMapped = () => {
         </div>
       )
 }
-else if (final == []){
+else if (final == []){ 
     setLoad(
-    <div className="Loader_Cont">
+    <div className="Loader_Cont"> 
       <ReactLoading
         type={"spinningBubbles"}
         color={"#fc6e64"}
