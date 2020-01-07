@@ -38,7 +38,8 @@ const DefaultHome =
               ] }
            },
            "editedFacts": {
-              "useCode": "SingleFamily",
+              "useCode": {
+                "_text" : "SingleFamily"},
               "bedrooms": {
                   "_text" :"4"},
               "bathrooms": {

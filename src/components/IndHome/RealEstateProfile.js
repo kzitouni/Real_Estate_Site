@@ -1,41 +1,40 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { IoMdStar } from "react-icons/io";
 import { MdMailOutline } from "react-icons/md";
 import { Context } from "../../Functions/SearchFetch";
-import Profiles from "../../Profiles";
-import swal from "sweetalert";
+import Profiles from "../../Default/Profiles";
 
 const RealEstateProfile = () => {
   const { house } = useContext(Context);
   let randomNumber = Number(house.zpid.charAt(house.zpid.length - 2));
   let person;
 
-  if (randomNumber === 1 || 0) {
-    person = Profiles[0];
-  } else if (randomNumber === 2) {
-    person = Profiles[1];
-  } else if (randomNumber === 3) {
-    person = Profiles[2];
-  } else if (randomNumber === 4 || 5) {
-    person = Profiles[3];
-  } else if (randomNumber === 6) {
-    person = Profiles[4];
-  } else if (randomNumber === 7) {
-    person = Profiles[5];
-  } else if (randomNumber === 8 || 9) {
-    person = Profiles[6];
-  } 
-  const popup = () => {
-    swal({
-      title: `Enter your email`,
-      content: "input",
-      button: "Submit",
-      closeOnClickOutside: false
-    }).then(() =>
-      swal("Great!", `${person.name} will reach out soon`, "success")
-    );
-  };
-  console.log(person.name, randomNumber, "homename");
+  switch (randomNumber) {
+    case 0 || 1:
+      person = Profiles[0];
+      break;
+    case 2:
+      person = Profiles[1];
+      break;
+    case 3:
+      person = Profiles[2];
+      break;
+    case 4 || 5:
+      person = Profiles[3];
+      break;
+    case 6:
+      person = Profiles[4];
+      break;
+    case 7:
+      person = Profiles[5];
+      break;
+    case 8 || 9:
+      person = Profiles[6];
+      break;
+    default:
+      person = Profiles[3];
+  }
+
   return (
     <div className="profile_cont">
       <div
@@ -49,9 +48,15 @@ const RealEstateProfile = () => {
       </div>
       <div className="Profile_Bottom_Cont">
         <div className="Profile_Button_Cont">
-          <button className="Profile_Button" onClick={() => popup()}>
+          <button
+            className="Profile_Button"
+            onClick={() =>
+              prompt(
+                `Enter your email and ${person.name} will reach out to you soon!`
+              )
+            }
+          >
             <p className="Contact_Text">
-              {" "}
               <MdMailOutline className="Mail_Icon" />
               Contact Agent
             </p>

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 var convert = require("xml-js");
 
 const HomeBox = item => {
-  const { fetchData, result, onClicked, setHouse, setBack } = useContext(
+  const { onClicked, setHouse } = useContext(
     Context
   );
   let price =

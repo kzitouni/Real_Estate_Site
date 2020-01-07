@@ -4,20 +4,21 @@ import { Context } from "../../Functions/SearchFetch";
 import ReactLoading from "react-loading";
 
 const HomeBoxMapped = () => {
-  const { result, isLoading, fetchData, total, final } = useContext(Context);
-  const [load, setLoad] = useState(
-    <div className="Loader_Cont">
-      <ReactLoading
-        type={"spinningBubbles"}
-        color={"#fc6e64"}
-        height={"100%"}
-        width={"20%"}
-        className="Loader_Icon"
-      />
-      <h1 className="Loader_Text">Searching</h1>
-    </div>
-  );
+  const { final } = useContext(Context);
+  const loader = (<div className="Loader_Cont">
+  <ReactLoading
+    type={"spinningBubbles"}
+    color={"#fc6e64"}
+    height={"100%"}
+    width={"20%"}
+    className="Loader_Icon"
+  />
+  <h1 className="Loader_Text">Searching</h1>
+</div>)
+  const [load, setLoad] = useState(loader);
+
   useEffect(() => {
+    setLoad(loader)
     if(final === false){
       setLoad(
         <div className="Loader_Cont">
@@ -27,20 +28,7 @@ const HomeBoxMapped = () => {
         </div>
       )
 }
-else if (final == []){ 
-    setLoad(
-    <div className="Loader_Cont"> 
-      <ReactLoading
-        type={"spinningBubbles"}
-        color={"#fc6e64"}
-        height={"100%"}
-        width={"20%"}
-        className="Loader_Icon"
-      />
-      <h1 className="Loader_Text">Searching</h1>
-    </div>
-  )
-}
+
   }, [final]);
 
   if (final != false) {

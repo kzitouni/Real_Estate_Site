@@ -1,5 +1,5 @@
 import React from "react";
-import { Headertext, Images } from "./Text";
+import { Headertext } from "./Text";
 import ScrollAnimation from 'react-animate-on-scroll';
 import "animate.css/animate.min.css";
 const Header = props => {

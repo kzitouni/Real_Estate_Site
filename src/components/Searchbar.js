@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import States from "../States";
+import States from "../Default/States";
 import { IoIosSearch } from "react-icons/io";
 import { Context } from "../Functions/SearchFetch";
 import { Link } from "react-router-dom";
