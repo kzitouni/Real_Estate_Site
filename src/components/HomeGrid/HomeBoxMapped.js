@@ -38,52 +38,14 @@ const HomeBoxMapped = () => {
           (Element = final.map(item => (
             <HomeBox
               zpid={item.zpid != undefined ? item.zpid : null}
-              zestimate={
-                item.zestimate != undefined
-                  ? item.zestimate
-                  : item.rentzestimate
-              }
-              address={
-                item.result.address.street != undefined
-                  ? item.result.address.street._text
-                  : ""
-              }
-              bed={
-                item.result.editedFacts != undefined
-                  ? item.result.editedFacts.bedrooms != undefined
-                    ? item.result.editedFacts.bedrooms._text
-                    : "?"
-                  : "?"
-              }
-              sqft={
-                item.result.editedFacts != undefined
-                  ? item.result.editedFacts.finishedSqFt != undefined
-                    ? item.result.editedFacts.finishedSqFt._text
-                    : "?"
-                  : "?"
-              }
-              rentzestimate={item.zestimate != undefined ? "" : "/Month"}
-              bathrooms={
-                item.result.editedFacts != undefined
-                  ? item.result.editedFacts.bathrooms != undefined
-                    ? item.result.editedFacts.bathrooms._text
-                    : "?"
-                  : "?"
-              }
-              type={
-                item.result.editedFacts != undefined
-                  ? item.result.editedFacts.useCode != undefined
-                    ? item.result.editedFacts.useCode._text
-                    : "?"
-                  : "?"
-              }
-              image={
-                item.result.images != undefined
-                  ? item.result.images.count._text == 1
-                    ? item.result.images.image.url._text
-                    : item.result.images.image.url[0]._text
-                  : item.image
-              }
+              zestimate={item.zestimate}
+              address={item.street}
+              bed={item.bedrooms}
+              sqft={item.finishedSqFt}
+              rentzestimate={item.rentzestimate}
+              bathrooms={item.bedrooms}
+              type={item.useCode}
+              image={item.images[0]}
             />
           )))
         }

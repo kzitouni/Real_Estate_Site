@@ -7,26 +7,14 @@ import { Gallery, GalleryImage } from "react-gesture-gallery";
 const IndHome = () => {
   const { house } = useContext(Context);
   const [index, setIndex] = useState(0);
-  let imageLength =
-    house.result.images != undefined ? house.result.images.count._text : 1;
-  let image1 =
-    house.result.images != undefined
-      ? imageLength > 1
-        ? house.result.images.image.url[0]._text
-        : house.result.images.image.url._text
-      : house.image;
-  let image2 =
-    house.result.images != undefined
-      ? imageLength > 1
-        ? house.result.images.image.url[1]._text
+  let imageLength = house.images.length
+  let image1 = house.images[0]
+  let image2 = imageLength  > 1
+        ? house.images[1]
         : null
-      : null;
-  let image3 =
-    house.result.images != undefined
-      ? imageLength > 2
-        ? house.result.images.image.url[2]._text
-        : null
-      : null;
+  let image3 = imageLength > 2
+        ? house.images[2]
+        : null;
   return (
     <div className="House_Info_Cont">
       <div className="IndHome_Images_Cont">
@@ -81,11 +69,11 @@ const IndHome = () => {
               }}
             >
               {house != undefined
-                ? house.result.images.image.url.map(img => (
+                ? house.images.map(img => (
                     <GalleryImage
                       objectFit="contain"
-                      key={img._text}
-                      src={img._text}
+                      key={img}
+                      src={img}
                     />
                   ))
                 : null}

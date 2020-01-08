@@ -16,7 +16,21 @@ const Mapp = () => {
   const { final } = useContext(Context);
 
   const [selectedHouse, setSelectedHouse] = useState(null);
-
+  let price;
+if(selectedHouse != null){
+  if(selectedHouse.zestimate != "?" && selectedHouse.rentzestimate == "?"){
+    price = selectedHouse.zestimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+  }
+  else if (selectedHouse.zestimate == "?" && selectedHouse.rentzestimate != "?") {
+    price = selectedHouse.rentzestimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+  }
+  else if (selectedHouse.zestimate == "?" && selectedHouse.rentzestimate == "?"){
+    price = "N/A"
+  }
+  else if (selectedHouse.zestimate != "?" && selectedHouse.rentzestimate != "?"){
+    price = selectedHouse.zestimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+  }
+}
   let iconMarker = new window.google.maps.MarkerImage(
     (<AiOutlineHome />),
     null,
@@ -30,11 +44,11 @@ const Mapp = () => {
       defaultCenter={{
         lat:
           final != false
-            ? Number(final[0].result.address.latitude._text)
+            ? Number(final[0].latitude)
             : 40.654936,
         lng:
           final != false
-            ? Number(final[0].result.address.longitude._text)
+            ? Number(final[0].longitude)
             : -74.120344
       }}
       defaultOptions={{ styles: mapStyles }}
@@ -43,8 +57,8 @@ const Mapp = () => {
         <Marker
           key={item.zpid}
           position={{
-            lat: Number(item.result.address.latitude._text),
-            lng: Number(item.result.address.longitude._text)
+            lat: Number(item.latitude),
+            lng: Number(item.longitude)
           }}
           onClick={() => setSelectedHouse(item)}
           icon={{
@@ -60,49 +74,32 @@ const Mapp = () => {
             setSelectedHouse(null);
           }}
           position={{
-            lat: Number(selectedHouse.result.address.latitude._text),
-            lng: Number(selectedHouse.result.address.longitude._text)
+            lat: Number(selectedHouse.latitude),
+            lng: Number(selectedHouse.longitude)
           }}
         >
           <div style={{ display: "flex" }}>
             <div
               className="Map_Label_Cont"
               style={{
-                backgroundImage: `url(${
-                  selectedHouse.result.images != undefined
-                    ? selectedHouse.result.images.count._text == 1
-                      ? selectedHouse.result.images.image.url._text
-                      : selectedHouse.result.images.image.url[0]._text
-                    : selectedHouse.image
-                })`
+                backgroundImage: `url(${selectedHouse.images[0]})`
               }}
             ></div>
             <div style={{ marginLeft: ".5rem" }}>
               <h2 className="Map_Label_Street">
-                {selectedHouse.result.address.street._text}
+                {selectedHouse.street}
               </h2>
               <p className="Map_Label_Price">
-                $
-                {selectedHouse.zestimate != undefined
-                  ? selectedHouse.zestimate
-                      .toString()
-                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                  : selectedHouse.rentzestimate
-                      .toString()
-                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "/M"}
+                ${price}
               </p>
               <div style={{ display: "flex", marginTop: ".2rem" }}>
                 <p className="Map_Label_Bed">
                   <IoIosBed className="Map_Label_Bed_Icon" />
-                  {selectedHouse.result.editedFacts.bedrooms != undefined
-                    ? selectedHouse.result.editedFacts.bedrooms._text
-                    : "?"}{" "}
+                  {selectedHouse.bedrooms}
                 </p>
                 <p className="Map_Label_Bath">
                   <FaBath className="Map_Label_Bath_Icon" />
-                  {selectedHouse.result.editedFacts.bathrooms != undefined
-                    ? selectedHouse.result.editedFacts.bathrooms._text
-                    : "?"}{" "}
+                  {selectedHouse.bathrooms}
                 </p>
               </div>
             </div>

@@ -8,18 +8,11 @@ const HomeBox = item => {
   const { onClicked, setHouse } = useContext(
     Context
   );
-  let price =
-    item.zestimate != undefined
-      ? "$" + item.zestimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-      : "N/A";
-  let type =
-    item.type != undefined
-      ? item.type
-          .toString()
-          .replace(/([A-Z 0-9])/g, " $1")
-          .trim()
-      : item.type;
-
+  const price = item.zestimate != ""
+  ? item.zestimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+  : 
+    item.rentzestimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " /Month";
+console.log(price)
   return (
     <div className="Home_Box_Cont">
       <div className="Home_Box_Image_Cont" onMouseEnter={() => setHouse()}>
@@ -50,8 +43,7 @@ const HomeBox = item => {
         </div>
         <div className="Home_Sub_Price_Cont">
           <p className="Home_Sub_Price_Price">
-            {price}
-            {item.rentzestimate}
+            ${price}
           </p>
         </div>
       </div>

@@ -293,10 +293,13 @@ table {
 
 .Home_Sub_Price_Price {
   color: $SecondaryColor;
-  width: 6rem;
+  width: 100%;
   font-weight: bold;
   font-size: 20px;
   margin-top: .7rem;
+}
+body {
+  overflow: hidden;
 }
 
 .IndHome_LargeImage {

@@ -1,50 +1,47 @@
 import React, { useState, useEffect } from "react";
 import DefaultHome from "../Default/DefaultHome";
 import axios from 'axios'
+import {DefaultHomes} from '../Default/DefaultHomes'
 const Context = React.createContext();
 
 const SearchFetch = ({ children }) => {
-  const [final, setFinal] = useState([]);
+  const [final, setFinal] = useState(DefaultHomes);
   const [house, setHouse] = useState(DefaultHome);
   const [addy, setAddy] = useState({
-    add: "140 Sunset ave",
-    cit: "North Arlington",
+    add: "340 Sunset ave",
+    cit: "Kearny",
     sta: "nj",
-    first: true
+    first: true 
   });
   const [back, setBack] = useState(false);
 
-  const GetData = async() => {
+  const GetData = async(add, cit, sta) => {
     try {
-      let Data = await axios.get(`https://7ohlgtw9j3.execute-api.us-east-1.amazonaws.com/HData?addr=${addy.add}&city=${addy.cit}&sta=${addy.sta}`)
+      let Data = await axios.get(`https://7ohlgtw9j3.execute-api.us-east-1.amazonaws.com/HData?addr=${add}&city=${cit}&sta=${sta}`)
       setFinal(Data.data)
+      console.log(JSON.stringify(Data.data))
     }
     catch (error) {
       console.log(error)
     }
   }
 
-  useEffect(() => {
-    GetData();
-  }, [addy]);
-  useEffect(() => {
-    GetData();
-  }, []);
   const onClicked = zp => {
     const res = final.find(item => zp == item.zpid);
     setHouse(res);
     setBack(true);
+    console.log(house)
   };
 
   const onSearch = (add, cit, sta) => {
-    setAddy({ add: add, cit: cit, sta: sta, first: true });
+    setAddy({ add: add, cit: cit, sta: sta, first: true })
     setFinal([]);
+    GetData(add, cit, sta)
   };
 
   return (
     <Context.Provider
       value={{
-        // fetchData,
         final,
         onClicked,
         house,
@@ -53,7 +50,8 @@ const SearchFetch = ({ children }) => {
         setFinal,
         addy,
         back,
-        setBack
+        setBack,
+        GetData
       }}
     >
       {" "}

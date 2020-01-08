@@ -5,64 +5,29 @@ import { Context } from "../../Functions/SearchFetch";
 const IndHomeText = () => {
   const { house } = useContext(Context);
   console.log(house, "housey");
-  const price =
-    house.zestimate != undefined
+  const price = house.zestimate != ""
       ? "$" + house.zestimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
       : "$" +
         house.rentzestimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
         " /Month";
-  const beds =
-    house.result.editedFacts != undefined
-      ? house.result.editedFacts.bedrooms != undefined
-        ? house.result.editedFacts.bedrooms._text
-        : "?"
-      : "?";
-  const bath =
-    house.result.editedFacts != undefined
-      ? house.result.editedFacts.bathrooms != undefined
-        ? house.result.editedFacts.bathrooms._text
-        : "?"
-      : "?";
-  const sqft =
-    house.result.editedFacts != undefined
-      ? house.result.editedFacts.finishedSqFt != undefined
-        ? house.result.editedFacts.finishedSqFt._text
-        : "?"
-      : "?";
-  const year =
-    house.result.editedFacts != undefined
-      ? house.result.editedFacts.yearBuilt != undefined
-        ? house.result.editedFacts.yearBuilt._text
-        : "?"
-      : "?";
-  const parking =
-    house.result.editedFacts != undefined
-      ? house.result.editedFacts.parkingType != undefined
-        ? house.result.editedFacts.parkingType._text
-        : "?"
-      : "?";
-  const type =
-    house.result.editedFacts != undefined
-      ? house.result.editedFacts.useCode != undefined
-        ? house.result.editedFacts.useCode._text
-            .replace(/([A-Z]|[0-9])/g, " $1")
-            .trim()
-        : "?"
-      : "?";
-  const description =
-    house.result.homeDescription != undefined
-      ? house.result.homeDescription._text
-      : "Description not provided.";
+  const beds = house.bedrooms;
+  const bath = house.bathrooms;
+  const sqft = house.finishedSqFt;
+  const year = house.yearBuilt;
+  const parking = house.parkingType;
+  const type = house.useCode.replace(/([A-Z]|[0-9])/g, " $1").trim();
+  const description = house.desc
+
   return (
     <div className="IndHome_Text">
       <div className="IndHome_Text_Title_Cont">
         <div>
           <h1 className="IndHome_Text_Title_Add">
-            {house.result.address.street._text},{" "}
-            {house.result.address.state._text}
+            {house.street},{" "}
+            {house.state}
           </h1>
           <p className="IndHome_Text_Title_City">
-            {house.result.address.city._text}
+            {house.city}
           </p>
         </div>
         <h1 className="IndHome_Text_Title_Price">{price}</h1>

@@ -15,7 +15,7 @@ const Headerbar = () => {
           className="Header_Link_Text"
           activeClassName="Header_Active"
         >
-            <p className="Header_left_text">Apartments</p>
+            <p className="Header_left_text">Homes</p>
             </NavLink>
           </div>
         

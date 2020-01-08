@@ -4,7 +4,7 @@ import { IoIosSearch } from "react-icons/io";
 import { Context } from "../Functions/SearchFetch";
 import { Link } from "react-router-dom";
 const Searchbar = () => {
-  const { onSearch } = useContext(Context);
+  const { onSearch, GetData } = useContext(Context);
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
   const [address, setAddress] = useState("");
