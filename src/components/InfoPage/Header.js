@@ -3,6 +3,7 @@ import { Headertext } from "./Text";
 import ScrollAnimation from 'react-animate-on-scroll';
 import "animate.css/animate.min.css";
 const Header = props => {
+  document.querySelector('body').style.overflow = "unset"
   return ( 
     <div>
       <div

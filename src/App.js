@@ -31,7 +31,7 @@ function App() {
             <IndHome />
           </div>
         </Route>
-        <Route exact path="/Sell">
+        <Route exact path="/Sell" >
           <Header menu={Images.Sell} />
           <Section1 menu={Images.Sell} />
           <Section2 menu={Images.Sell} />
