@@ -6,131 +6,214 @@ import {
   Marker,
   InfoWindow
 } from "react-google-maps";
-import { mapStyles } from "./mapStyles";
+import { MapStyles } from "./mapStyles";
 import { Context } from "../../Functions/SearchFetch";
 import { AiOutlineHome, AiOutlineDoubleLeft } from "react-icons/ai";
 import { FaBath } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { IoIosBed } from "react-icons/io";
-const Mapp = () => {
-  const { final } = useContext(Context);
-
+function Map() {
+  const {final} = useContext(Context)
   const [selectedHouse, setSelectedHouse] = useState(null);
+  // const [HouseNum, setHouseNum] = useState(0);
   let price;
-if(selectedHouse != null){
-  if(selectedHouse.zestimate != "?" && selectedHouse.rentzestimate == "?"){
-    price = selectedHouse.zestimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-  }
-  else if (selectedHouse.zestimate == "?" && selectedHouse.rentzestimate != "?") {
-    price = selectedHouse.rentzestimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-  }
-  else if (selectedHouse.zestimate == "?" && selectedHouse.rentzestimate == "?"){
-    price = "N/A"
-  }
-  else if (selectedHouse.zestimate != "?" && selectedHouse.rentzestimate != "?"){
-    price = selectedHouse.zestimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-  }
-}
-  let iconMarker = new window.google.maps.MarkerImage(
-    (<AiOutlineHome />),
-    null,
-    null,
-    null,
-    new window.google.maps.Size(32, 32)
-  );
+  if(selectedHouse != null) {
+   price = selectedHouse.zestimate != ""
+  ? selectedHouse.zestimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+  : 
+    selectedHouse.rentzestimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " /Month";
+  } 
   return (
-    <GoogleMap
-      defaultZoom={10}
-      defaultCenter={{
-        lat:
-          final != false
-            ? Number(final[0].latitude)
-            : 40.654936,
-        lng:
-          final != false
-            ? Number(final[0].longitude)
-            : -74.120344
-      }}
-      defaultOptions={{ styles: mapStyles }}
-    >
-      {final != false ? final.map(item => (
-        <Marker
-          key={item.zpid}
-          position={{
-            lat: Number(item.latitude),
-            lng: Number(item.longitude)
-          }}
-          onClick={() => setSelectedHouse(item)}
-          icon={{
-            url: "/MapMarker.svg",
-            scaledSize: new window.google.maps.Size(40, 40)
-          }}
-        />
-      )) : null}
-
-      {selectedHouse && (
-        <InfoWindow
-          onCloseClick={() => {
-            setSelectedHouse(null);
-          }}
-          position={{
-            lat: Number(selectedHouse.latitude),
-            lng: Number(selectedHouse.longitude)
-          }}
-        >
-          <div style={{ display: "flex" }}>
-            <div
-              className="Map_Label_Cont"
-              style={{
-                backgroundImage: `url(${selectedHouse.images[0]})`
-              }}
-            ></div>
-            <div style={{ marginLeft: ".5rem" }}>
-              <h2 className="Map_Label_Street">
-                {selectedHouse.street}
-              </h2>
-              <p className="Map_Label_Price">
-                ${price}
+      <GoogleMap 
+          defaultZoom={14}
+          defaultCenter={{lat: 40.834536, lng: -74.102201}}
+          defaultOptions={{styles:MapStyles}}
+          center ={{ lat: final.length > 1 ? final[1].latitude : 0, lng: final.length > 1 ? final[1].longitude : 0 }}
+      >
+      { final != false ? final.map((home, index) => (
+      <Marker
+        key={home.zpid}
+        position={{
+          lat: home.latitude,
+          lng: home.longitude
+        }}
+        
+        onMouseOver={() => {
+          setSelectedHouse(home);
+          // setHouseNum(index)
+        }}
+        icon={{
+          url: "/MapMarker.svg",
+          scaledSize: new window.google.maps.Size(30, 30)
+        }}
+      />
+       )) : null}
+       {selectedHouse && (
+      <InfoWindow
+        onCloseClick={() => {
+          setSelectedHouse(null);
+        }}
+        position={{
+          lat: selectedHouse.latitude,
+          lng: selectedHouse.longitude
+        }}
+      >
+      <div style={{ display: "flex" }}>
+          <div
+            className="Map_Label_Cont"
+            style={{
+              backgroundImage: `url(${selectedHouse.images[0]})`
+            }}
+          ></div>
+          <div style={{ marginLeft: ".5rem" }}>
+            <h2 className="Map_Label_Street">
+              {selectedHouse.street}
+            </h2>
+            <p className="Map_Label_Price">
+              ${price}
+            </p>
+            <div style={{ display: "flex", marginTop: ".2rem" }}>
+              <p className="Map_Label_Bed">
+                <IoIosBed className="Map_Label_Bed_Icon" />
+                {selectedHouse.bedrooms}
               </p>
-              <div style={{ display: "flex", marginTop: ".2rem" }}>
-                <p className="Map_Label_Bed">
-                  <IoIosBed className="Map_Label_Bed_Icon" />
-                  {selectedHouse.bedrooms}
-                </p>
-                <p className="Map_Label_Bath">
-                  <FaBath className="Map_Label_Bath_Icon" />
-                  {selectedHouse.bathrooms}
-                </p>
-              </div>
+              <p className="Map_Label_Bath">
+                <FaBath className="Map_Label_Bath_Icon" />
+                {selectedHouse.bathrooms}
+              </p>
             </div>
           </div>
-        </InfoWindow>
-      )}
-    </GoogleMap>
+        </div>
+      </InfoWindow>)}
+      </GoogleMap>
+  )
+}
+
+const MapWrapped = withScriptjs(withGoogleMap(Map))
+export default function GMap () {
+const {back} = useContext(Context)
+const APIKey = "AIzaSyCqvWsKxtH09vAJ4N6WmCQ6GGLYF0ZT3JY"
+ 
+return (
+      <div className="Map_Cont">
+        <MapWrapped
+            googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${APIKey}`}
+            loadingElement={<div style={{ height: `100%` }} />}
+            containerElement={<div style={{ height: `100%` }} />}
+            mapElement={<div style={{ height: `100%` }} />}
+        />
+        {back == true ? (
+      <Link className="Back_Button" to="/">
+        <AiOutlineDoubleLeft className="Back_Arrow" />
+      </Link>
+    ) : null}
+      </div>
   );
-};
+}
+// const Map = () => {
+//   const { final } = useContext(Context);
 
-const MapSearch = () => {
-  const { back } = useContext(Context);
+//   const [selectedHouse, setSelectedHouse] = useState(null);
+//   let price;
+// if(selectedHouse != null){
+//   if(selectedHouse.zestimate != "?" && selectedHouse.rentzestimate == "?"){
+//     price = selectedHouse.zestimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+//   }
+//   else if (selectedHouse.zestimate == "?" && selectedHouse.rentzestimate != "?") {
+//     price = selectedHouse.rentzestimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+//   }
+//   else if (selectedHouse.zestimate == "?" && selectedHouse.rentzestimate == "?"){
+//     price = "N/A"
+//   }
+//   else if (selectedHouse.zestimate != "?" && selectedHouse.rentzestimate != "?"){
+//     price = selectedHouse.zestimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+//   }
+// }
+//   return (
+//     <GoogleMap
+//       defaultZoom={10}
+//       defaultOptions={{ styles: mapStyles }}
+//       defaultCenter={{lat: 40.65,lng: -74.1}}
+//       center={{
+//         lat: final[0].latitude,
+//         lng: final[0].longitude
+//       }}
+//     >
+//       {final != false ? final.map((item, index) => (
+//         <Marker
+//           key={index}
+//           position={{
+//             lat: item.latitude,
+//             lng: item.longitude
+//           }}
+//           onClick={() => setSelectedHouse(item)}
+//           icon={{
+//             url: "/MapMarker.svg",
+//             scaledSize: new window.google.maps.Size(40, 40)
+//           }}
+//         />
+//       )) : null}
 
-  const MapWrapped = withScriptjs(withGoogleMap(Mapp));
-  return (
-    <div className="Map_Cont">
-      <MapWrapped
-        googleMapURL={
-          "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyCqvWsKxtH09vAJ4N6WmCQ6GGLYF0ZT3JY"
-        }
-        loadingElement={<div style={{ height: `100%` }} />}
-        containerElement={<div style={{ height: `100%` }} />}
-        mapElement={<div style={{ height: `100%` }} />}
-      />
-      {back == true ? (
-        <Link className="Back_Button" to="/">
-          <AiOutlineDoubleLeft className="Back_Arrow" />
-        </Link>
-      ) : null}
-    </div>
-  );
-};
+//       {selectedHouse && (
+//         <InfoWindow
+//           onCloseClick={() => {
+//             setSelectedHouse(null);
+//           }}
+//           position={{
+//             lat: selectedHouse.latitude,
+//             lng: selectedHouse.longitude
+//           }}
+//         >
+//           <div style={{ display: "flex" }}>
+//             <div
+//               className="Map_Label_Cont"
+//               style={{
+//                 backgroundImage: `url(${selectedHouse.images[0]})`
+//               }}
+//             ></div>
+//             <div style={{ marginLeft: ".5rem" }}>
+//               <h2 className="Map_Label_Street">
+//                 {selectedHouse.street}
+//               </h2>
+//               <p className="Map_Label_Price">
+//                 ${price}
+//               </p>
+//               <div style={{ display: "flex", marginTop: ".2rem" }}>
+//                 <p className="Map_Label_Bed">
+//                   <IoIosBed className="Map_Label_Bed_Icon" />
+//                   {selectedHouse.bedrooms}
+//                 </p>
+//                 <p className="Map_Label_Bath">
+//                   <FaBath className="Map_Label_Bath_Icon" />
+//                   {selectedHouse.bathrooms}
+//                 </p>
+//               </div>
+//             </div>
+//           </div>
+//         </InfoWindow>
+//       )}
+//     </GoogleMap>
+//   );
+// };
+// const MapWrapped = withScriptjs(withGoogleMap(Map));
 
-export default MapSearch;
+// const MapSearch = () => {
+//   const { back } = useContext(Context);
+//   return (
+//     <div className="Map_Cont">
+//       <MapWrapped
+//         googleMapURL={"https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyCqvWsKxtH09vAJ4N6WmCQ6GGLYF0ZT3JY"}
+//         loadingElement={<div style={{ height: `100%` }} />}
+//         containerElement={<div style={{ height: `100%` }} />}
+//         mapElement={<div style={{ height: `100%` }} />}
+//       />
+//       {back == true ? (
+//         <Link className="Back_Button" to="/">
+//           <AiOutlineDoubleLeft className="Back_Arrow" />
+//         </Link>
+//       ) : null}
+//     </div>
+//   );
+// };
+
+// export default MapSearch;

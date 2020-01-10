@@ -1,4 +1,4 @@
-export const mapStyles = [
+export const MapStyles = [
     {
         "featureType": "water",
         "elementType": "geometry",

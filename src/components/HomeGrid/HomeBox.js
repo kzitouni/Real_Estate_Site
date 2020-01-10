@@ -12,7 +12,6 @@ const HomeBox = item => {
   ? item.zestimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
   : 
     item.rentzestimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " /Month";
-console.log(price)
   return (
     <div className="Home_Box_Cont">
       <div className="Home_Box_Image_Cont" onMouseEnter={() => setHouse()}>

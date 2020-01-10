@@ -12,8 +12,8 @@ const Searchbar = () => {
   const [borderaddress, setBorderaddress] = useState("none");
   document.querySelector('body').style.overflow = "hidden"
 
-  const states = States.map(item => (
-    <option value={item.abbreviation}>{item.abbreviation}</option>
+  const states = States.map((item, indexId) => (
+    <option key={indexId} value={item.abbreviation}>{item.abbreviation}</option>
   ));
 
   const handleChange = event => {

@@ -19,7 +19,6 @@ const SearchFetch = ({ children }) => {
     try {
       let Data = await axios.get(`https://7ohlgtw9j3.execute-api.us-east-1.amazonaws.com/HData?addr=${add}&city=${cit}&sta=${sta}`)
       setFinal(Data.data)
-      console.log(JSON.stringify(Data.data))
     }
     catch (error) {
       console.log(error)
@@ -30,7 +29,6 @@ const SearchFetch = ({ children }) => {
     const res = final.find(item => zp == item.zpid);
     setHouse(res);
     setBack(true);
-    console.log(house)
   };
 
   const onSearch = (add, cit, sta) => {

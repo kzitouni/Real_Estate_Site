@@ -4,7 +4,6 @@ import { FaBath, FaVectorSquare } from "react-icons/fa";
 import { Context } from "../../Functions/SearchFetch";
 const IndHomeText = () => {
   const { house } = useContext(Context);
-  console.log(house, "housey");
   const price = house.zestimate != ""
       ? "$" + house.zestimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
       : "$" +

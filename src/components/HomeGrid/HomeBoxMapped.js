@@ -19,7 +19,7 @@ const HomeBoxMapped = () => {
 
   useEffect(() => {
     setLoad(loader)
-    if(final === false){
+    if(final === false || final == []){
       setLoad(
         <div className="Loader_Cont">
           <h1 className="Loader_Text">
@@ -35,7 +35,7 @@ const HomeBoxMapped = () => {
     return (
       <div className="Home_Box_Grid">
         {
-          (Element = final.map(item => (
+          (Element = final.map((item, indexId) => (
             <HomeBox
               zpid={item.zpid != undefined ? item.zpid : null}
               zestimate={item.zestimate}
@@ -46,6 +46,7 @@ const HomeBoxMapped = () => {
               bathrooms={item.bedrooms}
               type={item.useCode}
               image={item.images[0]}
+              key={indexId}
             />
           )))
         }
