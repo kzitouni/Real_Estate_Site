@@ -33,7 +33,8 @@ npm install
 
 ## Additional Images
 <style>
-#image {border-radius: 10px}
+#image {border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)}
 </style>
 <img src="./Images/RE2.jpg" id="image" >
 <img src="./Images/RE4.jpg" id="image">
