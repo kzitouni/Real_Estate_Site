@@ -123,12 +123,13 @@ table {
 }
 
 .State_Input_Cont {
-  margin: auto 2rem auto 5.2rem;
+  margin: 0 3vw;
   display: flex;
+  align-items: center;
 }
 
 .State_Input {
-  height: 1.65rem;
+  height: 1.5rem;
   width: 4rem;
   border: none;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
@@ -142,7 +143,7 @@ table {
 
 
 .City_Input {
-  margin: auto 0rem auto 2rem;
+  margin: 0 0 0 3vw;
   border: none;
   border-radius: 2px;
   height: 1.5rem;
@@ -354,7 +355,7 @@ body {
 
 .IndHome_Text {
   height: 15rem;
-  width: 27rem;
+  width: 93%;
 
 }
 
@@ -363,7 +364,7 @@ body {
   display: grid;
   margin-left: 1rem;
   margin-top: 1rem;
-  grid-template: auto/ 250px 150px;
+  grid-template: auto/ 60% 40%;
 }
 
 .IndHome_Text_Title_Price {
@@ -379,7 +380,7 @@ body {
 
 .IndHome_Text_Title_City {
   font-size: 12px;
-  margin-top: 10px;
+  margin-top: 2px;
 }
 
 .IndHome_Text_Sub_Info {
@@ -422,8 +423,8 @@ margin-left: 1rem;
 }
 
 .IndHome_Line {
-  width: 26rem;
-  margin-right: 16.7rem;
+  width: 95%;
+  margin-left: 1rem;
 }
 
 .IndHome_Text_Sub_Description_Text {
@@ -473,7 +474,7 @@ font-size: 12px;
 }
 
 .Search_Cont {
-  margin-left: 4rem;
+  margin-left: 3vw;
 }
 
 .Search_Button {
@@ -723,9 +724,9 @@ font-size: 12px;
 
 .Info_Page_Header_Sub {
   display: flex;
-  margin-top: 5rem;
-  text-align: center;
-  justify-content: center;
+  align-items: center;   
+  width: 60%;
+  margin: 5rem auto;
 }
 
 .Info_Page_Header_hr_Cont {
@@ -748,7 +749,7 @@ font-size: 12px;
 .Info_Page_Header_Sub_Text {
   margin-top: 1rem;
   font-size: 30px;
-  width: 35rem;
+  // width: 35rem;
   color: navy;
   text-align: left;
   margin-left: .5rem;
@@ -806,13 +807,13 @@ font-size: 12px;
 }
 
 .Info_Page_Middle_Text {
-  font-size: 20px;
+  font-size: 50px;
   color: #203367;
 }
 
 .Info_Page_Middle_Ptext {
   color: #656c83;
-  font-size: 12px;
+  font-size: 20px;
   margin-top: 1rem;
 }
 
@@ -951,15 +952,18 @@ text-align: center;
   .IndHome_LargeImage {
     grid-area: b;
   }
+  .IndHome_Images_Cont {
+    display: unset;
+  }
 }
 
-@media only screen and (max-width: 1005px) {
+@media only screen and (max-width: 1200px) {
 .profile_cont {
   display: none;
 }
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 570px) {
 .House_Info_Cont {
   width: 100%; 
 } 
@@ -1063,3 +1067,72 @@ text-align: center;
       opacity: .4;
     }
     }
+
+@media only screen and (max-width: 490px) {
+  .IndHome_Text_Sub_Info{
+    width: 90vw;
+  }
+  .IndHome_Text_Sub_1stRow {
+    width: 90vw;
+  }
+  .IndHome_Text_Sub_Bed {
+    margin: 0 12vw 0 0;
+  }
+  .IndHome_Line {
+    width: 100%;
+    margin-left: 1rem;
+  }
+  .IndHome_Text_Title_Cont{
+    grid-template: auto/60% 40%;
+  }
+  .IndHome_Text_Title_City {
+    margin-top: unset;
+  }
+  .IndHome_Images_Cont {
+    display: unset;
+  }
+  .Info_Page_Middle_Text{
+    font-size: 30px;
+  }
+  .Info_Page_Middle_Ptext{
+    font-size: 15px;
+  }
+  .Info_Page_Middle_Ptext_grey {
+font-size: 15px;
+  }
+  .Info_Page_Header_Sub_Text {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 12px) {
+.City_Input{
+  width: 20vw;
+  padding-left: 2px;
+}
+// .Search_Button{
+//   width: 25vw;
+// }
+.Search_Cont{
+  margin-left: 5vw;
+}
+.City_Input {
+  width: 5rem;
+  }
+  .Search_Cont {
+    width: 7rem;
+  }
+  .State_Input_Cont {
+    margin: auto 0 auto .5rem;
+  }
+  .Search_Cont {
+    margin-left: 2rem;
+  }
+}
+
+@media only screen and (max-width: 815px) {
+.IndHome_Text_Sub_Bed {
+  margin: 0rem 10% 0rem 0rem;
+}
+
+}

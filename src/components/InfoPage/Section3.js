@@ -15,10 +15,10 @@ const Section3 = props => {
           </ScrollAnimation>
         <div className="Info_Page_Middle_Text_Cont_3rd">
         <ScrollAnimation  animateIn='fadeInUp' animateOnce='true'>
-          <h1 className="Info_Page_Middle_Text" style={{ fontSize: "50px" }}>
+          <h1 className="Info_Page_Middle_Text" >
             {Section3text[0]}
           </h1>
-          <p className="Info_Page_Middle_Ptext" style={{ fontSize: "20px" }}>
+          <p className="Info_Page_Middle_Ptext" >
             {Section3text[1]}
           </p>
           </ScrollAnimation> 

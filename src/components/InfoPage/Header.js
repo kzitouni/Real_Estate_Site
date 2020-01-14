@@ -19,12 +19,13 @@ const Header = props => {
           <p className="Info_Page_Header_Subtext">{Headertext[1]}</p>
         </ScrollAnimation>
         </div>
-      </div>
-      <div className="Info_Page_Header_Sub">
-      <ScrollAnimation animateIn='fadeInUp' animateOnce='true'>
+      </div> 
+      <div >
+      {/* <ScrollAnimation animateIn='fadeInUp' animateOnce='true'>
         <p className="Info_Page_Line">|</p>
-        </ScrollAnimation>
-        <ScrollAnimation animateIn='fadeInUp' animateOnce='true'>
+        </ScrollAnimation> */}
+        <ScrollAnimation animateIn='fadeInUp' animateOnce='true' className="Info_Page_Header_Sub">
+        <p className="Info_Page_Line">|</p>
         <p className="Info_Page_Header_Sub_Text">{Headertext[2]}</p>
         </ScrollAnimation>
       </div>

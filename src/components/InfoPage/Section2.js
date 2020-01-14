@@ -14,7 +14,6 @@ const Section2 = props => {
           <ScrollAnimation  animateIn='fadeInUp' animateOnce='true'>
             <h1
               className="Info_Page_Middle_Text"
-              style={{ color: "white", fontSize: "50px" }}
             >
               {" "}
               {Section2text[0]}
@@ -23,8 +22,8 @@ const Section2 = props => {
             </ScrollAnimation>
           </div>
           <ScrollAnimation  animateIn='fadeInUp' animateOnce='true'  className="Info_Page_Middle_Image2"
+            style={{backgroundImage:`url(${props.menu[2]})`}}
             >
-              <img src={props.menu[2]} className="Info_Page_Middle_Image2"/>
           </ScrollAnimation>
           <div
            
