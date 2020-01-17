@@ -24,6 +24,9 @@ const Section2 = props => {
           <ScrollAnimation  animateIn='fadeInUp' animateOnce='true'  className="Info_Page_Middle_Image2"
             style={{backgroundImage:`url(${props.menu[2]})`}}
             >
+              <div>
+              
+              </div>
           </ScrollAnimation>
           <div
            
