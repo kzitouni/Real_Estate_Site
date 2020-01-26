@@ -8,6 +8,7 @@ const HomeBox = item => {
   const { onClicked, setHouse } = useContext(
     Context
   );
+  console.log(item.sqft, "square")
   const price = item.zestimate != ""
   ? item.zestimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
   : 
@@ -36,7 +37,7 @@ const HomeBox = item => {
             {item.bed == 0 ? "?" : item.bed} Bed
           </p>
           <p className="Home_Sub_Bed_Text">
-            <FaVectorSquare style={{ marginRight: ".2rem" }} /> {item.sqft} sq
+            <FaVectorSquare style={{ marginRight: ".2rem" }} /> {item.sqft == "" ? "?" : item.sqft} sq
             ft
           </p>
         </div>

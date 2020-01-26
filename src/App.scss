@@ -115,7 +115,7 @@ table {
 }
 
 .Searchbar_Cont {
-  width: 100%;
+  width: 100vw;
   height: 4rem;
   background-color: $BackgroundColor;
   display: flex;
@@ -1122,6 +1122,6 @@ font-size: 15px;
 }
 @media only screen and (max-width: 420px) {
 .IndHome_LargeImage{
-  width: 19rem;
+  width: 90%;
 }
 }

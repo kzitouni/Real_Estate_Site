@@ -36,6 +36,7 @@ const HomeBoxMapped = () => {
       <div className="Home_Box_Grid">
         {
           (Element = final.map((item, indexId) => (
+            
             <HomeBox
               zpid={item.zpid != undefined ? item.zpid : null}
               zestimate={item.zestimate}
