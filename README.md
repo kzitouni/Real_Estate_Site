@@ -4,8 +4,11 @@ A responsive real estate website that utilizes fetch calls to the Zillow API to 
 
 <img src="./Images/RE1.jpg" id="image"/>
 
-## Running Version of Site
-bit.ly/real-estate33
+<p align="center">
+<a href="https://kz-real-estate.netlify.com/" target="_blank" >
+<img src="https://gitimages12.s3.amazonaws.com/image+(12).png" />
+</a>
+</p>
 
 ## Installation
 
