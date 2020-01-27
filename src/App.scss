@@ -493,6 +493,10 @@ font-size: 12px;
   font-size: 14px;
 }
 
+.Search_Text::after{
+content: "Search";
+}
+
 .Search_Icon {
   margin-right: 1rem;
   font-size: 18px;
@@ -1123,5 +1127,24 @@ font-size: 15px;
 @media only screen and (max-width: 420px) {
 .IndHome_LargeImage{
   width: 90%;
+}
+}
+
+@media only screen and (max-width: 420px) {
+  .Search_Text::after {
+    content: "";
+}
+.Search_Cont {
+  margin-left: 1rem;
+  width: 2rem;
+}
+.Search_Icon {
+ margin-right: unset;
+}
+.Search_Button {
+  width: 2rem;
+}
+.Header_Button {
+  margin-left: 5vw;
 }
 }
