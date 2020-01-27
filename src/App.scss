@@ -188,7 +188,7 @@ table {
 }
 
 .Page_Cont {
-  grid-template-columns: repeat(12, 1fr);
+  // grid-template-columns: repeat(12, 1fr);
   height: 79vh;
   display: flex;
 }
@@ -950,7 +950,7 @@ text-align: center;
     display: none;
   }
   .IndHome_LargeImage {
-    grid-area: b;
+    grid-area: unset;
     margin-top: 1rem;
   }
   .IndHome_Images_Cont {
@@ -1126,7 +1126,7 @@ font-size: 15px;
 }
 @media only screen and (max-width: 420px) {
 .IndHome_LargeImage{
-  width: 90%;
+  width: 80%;
 }
 }
 

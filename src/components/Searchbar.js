@@ -65,8 +65,7 @@ const Searchbar = () => {
             >
               <p className="Search_Text">
                 {" "}
-                <IoIosSearch className="Search_Icon" />
-                
+                <IoIosSearch className="Search_Icon" size={20} />
               </p>
             </button>
           </Link>
