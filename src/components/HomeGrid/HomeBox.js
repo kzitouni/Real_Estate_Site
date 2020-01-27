@@ -8,7 +8,6 @@ const HomeBox = item => {
   const { onClicked, setHouse } = useContext(
     Context
   );
-  console.log(item.sqft, "square")
   const price = item.zestimate != ""
   ? item.zestimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
   : 

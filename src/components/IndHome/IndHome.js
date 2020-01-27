@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { FaRegImage } from "react-icons/fa";
 import IndHomeText from "./IndHomeText";
 import { Context } from "../../Functions/SearchFetch";
@@ -6,7 +6,19 @@ import RealEstateProfile from "./RealEstateProfile";
 import { Gallery, GalleryImage } from "react-gesture-gallery";
 const IndHome = () => {
   const { house } = useContext(Context);
+  const [PageWidth, setPageWidth] = useState(Math.max(document.documentElement.clientWidth, window.innerWidth || 0))
   const [index, setIndex] = useState(0);
+  console.log(PageWidth, "pagesize")
+  useEffect(() => {
+    window.addEventListener('resize', handleResize)
+    function handleResize() {
+    setPageWidth(window.innerWidth)
+    }
+    if(PageWidth > 449){
+      return  window.removeEventListener('resize', handleResize)
+
+    }
+  })
   let imageLength = house.images.length
   let image1 = house.images[0]
   let image2 = imageLength  > 1
@@ -53,7 +65,7 @@ const IndHome = () => {
               background: `url(${image1}) no-repeat center center white`
             }}
           ></div>
-        ) : imageLength == 1 ? (
+        ) : imageLength == 1 || PageWidth < 450 ? (
           <div
             className="IndHome_LargeImage"
             style={{
