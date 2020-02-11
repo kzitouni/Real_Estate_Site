@@ -16,7 +16,7 @@ const HomeBox = item => {
     <div className="Home_Box_Cont">
       <div className="Home_Box_Image_Cont" onMouseEnter={() => setHouse()}>
         <Link to="/Home" onClick={() => onClicked(item.zpid)}>
-          <div
+          <div    
             className="Home_Box_Image"
             style={{ backgroundImage: `url(${item.image})` }}
           ></div>
