@@ -12,41 +12,41 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
   vertical-align: baseline;
   font-family: 'Roboto', sans-serif;
 
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-	display: block;
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
 ol, ul {
-	list-style: none;
+  list-style: none;
 }
 blockquote, q {
-	quotes: none;
+  quotes: none;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-	content: '';
-	content: none;
+  content: '';
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 .App {
   text-align: center;
@@ -116,9 +116,10 @@ table {
 
 .Searchbar_Cont {
   width: 100vw;
-  height: 4rem;
+  height: 7vh;
   background-color: $BackgroundColor;
   display: flex;
+  min-height: 3rem;
 
 }
 
@@ -138,7 +139,7 @@ table {
 
 .State_Input::after {
   color: #333;
-  
+
 }
 
 
@@ -170,7 +171,7 @@ table {
 .switch-wrapper {
   position: relative;
 }
- 
+
 .switch-wrapper > div {
   position: absolute;
 }
@@ -189,7 +190,7 @@ table {
 
 .Page_Cont {
   // grid-template-columns: repeat(12, 1fr);
-  height: 79vh;
+  height: 86vh;
   display: flex;
 }
 
@@ -306,13 +307,13 @@ body {
 
 .IndHome_LargeImage {
   height: 17.5rem;
-  width: 23rem;
+  width: 34vw;
   justify-content: center;
   margin: auto auto auto auto;
   border-radius: 7px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   grid-area: a;
-}  
+}
 
 .IndHome_Images_Cont {
   display: grid;
@@ -329,10 +330,12 @@ body {
   height: 8rem;
   margin: auto auto auto auto;
     background-size: cover;
-    background-image: url('https://www.battlegroundindy.com/wp-content/uploads/2019/01/no-image-770x466.jpg');
+    background-image:
+url('https://www.battlegroundindy.com/wp-content/uploads/2019/01/no-image-770x466.jpg');
     border-radius: 7px;
     justify-content: center;
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,
+0, 0, 0.19);
 }
 
 .IndHome_SmallImage_Dark {
@@ -364,7 +367,7 @@ body {
   display: grid;
   margin-left: 1rem;
   margin-top: 1rem;
-  grid-template: auto/ 60% 40%;
+  grid-template: auto/ 60% 35.5%;
 }
 
 .IndHome_Text_Title_Price {
@@ -423,13 +426,19 @@ margin-left: 1rem;
 }
 
 .IndHome_Line {
-  width: 95%;
+  width: 93%;
   margin-left: 1rem;
 }
 
 .IndHome_Text_Sub_Description_Text {
   margin-top: .4rem;
   font-size: 12px;
+}
+
+.Upper_Nav_Bar_Cont {
+  display: flex;
+  height: 7vh;
+  min-height: 3.5rem;
 }
 
 .Map_Label_Cont {
@@ -484,13 +493,19 @@ font-size: 12px;
   border-radius: 5px;
   width: 7rem;
   height: 1.8rem;
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 .Search_Text{
   color: white;
   display: flex;
   font-size: 14px;
+  align-items: center
+}
+
+.Info_Page_Dark_Title_Text {
+  font-size: 50px;
+  color: #1a2546;
 }
 
 .Search_Text::after{
@@ -606,6 +621,7 @@ content: "Search";
   color: white;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   cursor: pointer;
+  align-items: center;
 }
 
 .Contact_Text {
@@ -655,12 +671,12 @@ content: "Search";
 }
 
 .Right_Side_Cont::-webkit-scrollbar-thumb {
-	border-radius: 6px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: #555;
+  border-radius: 6px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #555;
 }
 .Right_Side_Cont::-webkit-scrollbar-thumb:active {
-	border-radius: 8px;
+  border-radius: 8px;
   -webkit-box-shadow: 0 0 1px 1px hsla(0,0%,100%,.25);
 }
 
@@ -675,12 +691,12 @@ content: "Search";
 }
 
 .House_Info_Cont::-webkit-scrollbar-thumb {
-	border-radius: 6px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: #555;
+  border-radius: 6px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #555;
 }
 .House_Info_Cont::-webkit-scrollbar-thumb:active {
-	border-radius: 8px;
+  border-radius: 8px;
   -webkit-box-shadow: 0 0 1px 1px hsla(0,0%,100%,.25);
 }
 
@@ -707,7 +723,7 @@ content: "Search";
 }
 
 .Info_Page_Header_Subtext {
-  position: absolute; 
+  position: absolute;
   color: white;
   font-size: 20px;
   margin-top: .5rem;
@@ -726,7 +742,7 @@ content: "Search";
 
 .Info_Page_Header_Sub {
   display: flex;
-  align-items: center;   
+  align-items: center;
   width: 60%;
   margin: 5rem auto;
 }
@@ -754,7 +770,7 @@ content: "Search";
   color: navy;
   text-align: left;
   margin-left: .5rem;
-  
+
 }
 
 .Info_Page_Header_Text_Cont {
@@ -802,7 +818,8 @@ content: "Search";
   margin-left: -68%;
   z-index: 10;
   overflow: visible;
-  background-image: url("https://images.pexels.com/photos/302769/pexels-photo-302769.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+  background-image:
+url("https://images.pexels.com/photos/302769/pexels-photo-302769.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
   background-size: cover;
 }
 
@@ -832,11 +849,12 @@ content: "Search";
 
 .Info_Page_Middle_Image2 {
   margin-left: 0%;
-  z-index: 10; 
+  z-index: 10;
   width: 60%;
   height: 80%;
   overflow: visible;
-  background-image: url("https://www.trabahomes.com/wp-content/uploads/2016/09/Captivating-House-Interior-Design-Coupled-with-Amazing-TV-Frame-and-Modern-Sofa-in-Bright-White.jpg");
+  background-image:
+url("https://www.trabahomes.com/wp-content/uploads/2016/09/Captivating-House-Interior-Design-Coupled-with-Amazing-TV-Frame-and-Modern-Sofa-in-Bright-White.jpg");
   background-size: cover;
 }
 
@@ -876,14 +894,16 @@ content: "Search";
   height: 100%;
   z-index: 10;
   overflow: visible;
-  background-image: url("https://davidchipperfield.com/img/MlYxTnpwaE5zZlhRczlhS29McytxQT09/1164-08-d-dca.jpg");
+  background-image:
+url("https://davidchipperfield.com/img/MlYxTnpwaE5zZlhRczlhS29McytxQT09/1164-08-d-dca.jpg");
   background-size: cover;
 }
 
 .Info_Page_Numbers_Cont {
   width: 96%;
   float: right;
-  background-image: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80');
+  background-image:
+url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80');
   height: 30rem;
   background-size: cover;
   background-color: black;
@@ -938,9 +958,10 @@ text-align: center;
   height: 100%
 }
 .Info_Page_Middle_Ptext_grey {
-  font-size:20px; 
+  font-size:20px;
   color:#a6a9b3;
-} 
+  margin-top: 1rem;
+}
 
 @media only screen and (max-width: 1105px) {
   .Home_Box_Grid {
@@ -966,12 +987,12 @@ text-align: center;
 
 @media only screen and (max-width: 570px) {
 .House_Info_Cont {
-  width: 100%; 
-} 
-.Map_Cont { 
+  width: 100%;
+}
+.Map_Cont {
   display: none;
 }
-.Right_Side_Cont { 
+.Right_Side_Cont {
   width: 100%;
 }
 
@@ -1010,7 +1031,7 @@ text-align: center;
       color: #203367;
     }
     .Info_Page_Middle_Ptext_grey {
-      color: white; 
+      color: white;
       text-shadow: -1px 0px rgba(0,0,0,0.4);
     }
     .Info_Page_Bluebox {
@@ -1065,7 +1086,8 @@ text-align: center;
     .Info_Page_Numbers_Cont {
       height: 50rem;
     }
-    .Info_Page_Middle_Image > div, .Info_Page_Middle_Image_3rd > div,  .Info_Page_Middle_Image2 > div  {
+    .Info_Page_Middle_Image > div, .Info_Page_Middle_Image_3rd > div,
+.Info_Page_Middle_Image2 > div  {
       width: 100%;
       height: 100%;
       position: absolute;

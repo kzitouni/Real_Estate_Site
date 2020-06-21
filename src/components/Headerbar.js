@@ -3,7 +3,7 @@ import { FaHome } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 const Headerbar = () => {
   return (
-    <div style={{ display: "flex" }}>
+    <div className="Upper_Nav_Bar_Cont" >
       <div className="Header_Cont">
         <div>
           <FaHome className="Home_Logo" />
@@ -18,7 +18,7 @@ const Headerbar = () => {
             <p className="Header_left_text">Homes</p>
             </NavLink>
           </div>
-        
+
           <div className="Header_Button">
           <NavLink
           to="/Buy"
@@ -44,7 +44,7 @@ const Headerbar = () => {
           activeClassName="Header_Active"
         >
             <p className="Header_left_text">Rent</p>
-          </NavLink> 
+          </NavLink>
           </div>
       </div>
       <div className="Header_Right_Cont"></div>

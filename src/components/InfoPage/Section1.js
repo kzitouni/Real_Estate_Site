@@ -6,17 +6,18 @@ const Section1 = props => {
   return (
     <div className="Info_Page_Middle_Cont">
       <div className="Info_Page_Graybox">
-      <ScrollAnimation animateIn='fadeInUp' animateOnce='true'  className="Info_Page_Middle_Image"
+      <ScrollAnimation animateIn='fadeInUp' animateOnce='true'
+className="Info_Page_Middle_Image"
       style={{backgroundImage:`url(${props.menu[1]})`}}
           >
             <div>
-              
+
             </div>
         </ScrollAnimation>
 
         <div className="Info_Page_Middle_Text_Cont">
         <ScrollAnimation  animateIn='fadeInUp' animateOnce='true'>
-          <h1 className="Info_Page_Middle_Text" >
+          <h1 className="Info_Page_Dark_Title_Text" >
             {Section1text[0]}
           </h1>
           <p className="Info_Page_Middle_Ptext" >
