@@ -23,7 +23,7 @@ const Section3 = props => {
           </h1>
           <p className="Info_Page_Middle_Ptext" >
             {Section3text[1]}
-          </p>
+          </p> 
           </ScrollAnimation>
         </div>
       </div>
